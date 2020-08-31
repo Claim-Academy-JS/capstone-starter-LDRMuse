@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "start-server": "nodemon dist/main.js",
-    "watch": "webpack --watch"
+    "watcher": "webpack --watch"
   },
   "keywords": [
     "MEN"
