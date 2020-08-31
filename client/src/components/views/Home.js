@@ -21,7 +21,7 @@ export const Home = () => (
         <div className="container">
           <h1 className="title">Brow and Arrow</h1>
           <div className="flex flex--align-center flex--column">
-            <Link className="button is-primary my-2" to="/login">Get Started</Link>
+            <Link className="button is-primary my-2" to="/get-started">Get Started</Link>
             <Link className="button is-small my-2" to="/login">Login</Link>
           </div>
         </div>
