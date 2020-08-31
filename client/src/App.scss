@@ -1,1 +1,24 @@
-@import "./shared"
+@import "./shared";
+
+.flex {
+  display: flex;
+}
+
+.flex--align-center {
+  align-items: center;
+}
+
+.flex--column {
+  flex-direction: column;
+}
+
+// Bulma
+.hero {
+  background: url("https://p.kindpng.com/picc/s/3-38215_brow-bar-vector-eyebrow-png-transparent-png.png") no-repeat fixed;
+  // center center fixed
+  // background-size: cover;
+}
+
+.hero-body {
+  background: rgba(255, 255, 255, 0.8);
+}
