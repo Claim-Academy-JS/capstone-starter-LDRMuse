@@ -7,11 +7,10 @@ export const Header = () => {
     <section className="hero has-text-centered">
         <div className="hero-body">
           <div className="container">
-          <h1 className="title"><Link to="/">Brow and Arrow Home!</Link></h1>
+          <h1 className="title"><Link to="/">Brow and Arrow</Link></h1>
             <h2 className="subtitle">Client management application</h2>
           </div>
         </div>
-
     </section>
   )
 }
