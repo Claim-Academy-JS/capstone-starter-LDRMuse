@@ -1,3 +1,20 @@
 export default {
-  // TODO: Add api routes here
+  async addUser(newUser) {
+    try {
+      const res = await fetch('http://localhost:5000/get-started', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newUser),
+      })
+      if (res.status > 400) {
+        throw `Unable to fetch from server`
+      }
+      return await res.json()
+    } catch (error) {
+      throw new Error(error)
+    }
+
+  },
 };
