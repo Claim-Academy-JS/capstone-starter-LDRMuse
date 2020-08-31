@@ -7,7 +7,7 @@ import { ClientChart, Header, Home, Login } from "./components"
 
 import "./App.scss"
 
-export const App = () => {
+function App() {
   return (
     <Router>
       <Route exact={true} path="/">
@@ -22,7 +22,7 @@ export const App = () => {
 
       <Switch>
         <Route exact path="/client-chart">
-                {/* TODO: Move this behind 'login' system. */}
+        {/* only if user is logged in */}
         </Route>
       </Switch>
     </Router>
@@ -30,3 +30,4 @@ export const App = () => {
   )
 }
 
+export default App
