@@ -4,7 +4,7 @@ import logo from "./logo.svg"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 import { ClientChart, Header, Home, Login } from "./components"
-import { GetStarted } from "components/views/GetStarted"
+import { GetStarted } from "components/base/GetStarted"
 
 import "./App.scss"
 
