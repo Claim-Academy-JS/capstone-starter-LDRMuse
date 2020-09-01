@@ -1,16 +1,23 @@
 import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
+import {useLocation} from 'react-router-dom'
 
 import * as Yup from 'yup'
 
 import { Formik, Field, Form, ErrorMessage } from "formik"
 
 export const ClientData = () => {
+  // const {
+  //   state: {
+  //     values
+  //   }
+  // } = useLocation()
 
   return (
     <Fragment>
       <section className="px-4 py-4 mt-4">
         <div className="container">
-          <h2 className="title is-5">Chart Entry</h2>
+          <h2 className="title is-5">Chart Entry for {values.firstName} {values.lastName}</h2>
         </div>
       </section>
 
@@ -124,7 +131,6 @@ export const ClientData = () => {
         </Form>
       </Formik>
     </Fragment>
-
-
   )
 }
+
