@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
-import user from './routes/user';
+import users from './routes/users';
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.get('/', (_, res) => {
   res.send('<h1>Express</h1>');
 });
 
-app.use('/user', user);
+app.use('/users', users);
 
 app.use((_, res) => {
   res.status(404).send('Sorry cannot find that!');

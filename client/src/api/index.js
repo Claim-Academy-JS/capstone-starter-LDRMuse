@@ -1,7 +1,7 @@
 export default {
   async addUser(newUser) {
     try {
-      const res = await fetch('http://localhost:5000/get-started', {
+      const res = await fetch('http://localhost:5000/users/add', {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
