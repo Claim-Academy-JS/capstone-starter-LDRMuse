@@ -1,7 +1,9 @@
 import dotenv from 'dotenv';
 
+// allows us to connect to mongodb
 import { MongoClient } from 'mongodb';
 
+// allows us to use .env
 dotenv.config();
 
 const client = new MongoClient(process.env.MONGO_URI, {

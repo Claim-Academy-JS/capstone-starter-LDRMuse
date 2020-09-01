@@ -17,4 +17,10 @@ export default {
     }
 
   },
+  async deleteUser() {
+    const res = await fetch('http://localhost:5000/users/delete', {
+      method: 'DELETE',
+    })
+    return await res.json();
+  }
 };
