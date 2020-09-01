@@ -3,3 +3,4 @@ export {Header} from './views/Header'
 export {Login} from './base/Login'
 
 export { ClientChart } from './base/ClientChart'
+export { ClientData } from './base/ClientChart/ClientData'

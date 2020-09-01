@@ -3,7 +3,7 @@ import React from "react"
 import logo from "./logo.svg"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
-import { ClientChart, Header, Home, Login } from "./components"
+import { ClientChart, Header, Home, Login, ClientData } from "./components"
 import { GetStarted } from "components/base/GetStarted"
 
 import "./App.scss"
@@ -17,7 +17,7 @@ function App() {
       </Route>
 
 
-      <Route exact={true} path="/client-chart">
+      <Route exact={true} path="/add-client">
       <Header />
       <ClientChart />
       </Route>
@@ -37,7 +37,8 @@ function App() {
       </Switch>
 
       <Switch>
-        <Route exact path="/client-chart">
+        <Route exact path="/view-client">
+        <ClientData />
           {/* only if user is logged in */}
         </Route>
       </Switch>
