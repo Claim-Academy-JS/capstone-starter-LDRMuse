@@ -1,12 +1,17 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 
 import * as Yup from 'yup'
 
 import { Formik, Field, Form, ErrorMessage } from "formik"
 
-import {ClientData} from './ClientData'
+import { ClientData } from './ClientData'
 
 export const ClientChart = () => {
+  const [fullName, setFullName] = useState('')
+
+  // if (firstName && lastName) {
+  //   const fullName = setFullName(fullName)
+  // }
 
   return (
     <Fragment>
@@ -18,12 +23,14 @@ export const ClientChart = () => {
 
       <Formik
         initialValues={{
-          name: '',
+          firstName: '',
+          lastName: '',
           email: '',
           phone: '',
         }}
         validationSchema={Yup.object({
-          name: Yup.string().required('Name is required'),
+          firstName: Yup.string().required('first name is required'),
+          lastName: Yup.string().required('last name is required'),
           email: Yup.string().email('invalid email').required('Email is required'),
           phone: Yup.string().required('Phone is required'),
         })}
@@ -36,9 +43,13 @@ export const ClientChart = () => {
           <div className='field'>
             <label htmlFor="name">Client Name</label>
             <div className='control'>
-              <Field className='mt-3' name="name" type="text" />
+              <Field className='mt-3' name="firstName" type="text" placeholder="First Name" />
               <p className='help is-danger'>
-                <ErrorMessage name="name" />
+                <ErrorMessage name="firstName" />
+              </p>
+              <Field className='mt-3' name="lastName" type="text" placeholder="Last Name" />
+              <p className='help is-danger'>
+                <ErrorMessage name="lastName" />
               </p>
             </div>
           </div>
@@ -63,11 +74,11 @@ export const ClientChart = () => {
               </p>
             </div>
           </div>
+
+          <button className='button is-primary'>Submit</button>
         </Form>
       </Formik>
-      <ClientData />
-      </Fragment>
+    </Fragment>
 
-
-)
+  )
 }
