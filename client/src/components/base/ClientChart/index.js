@@ -4,7 +4,7 @@ import * as Yup from "yup"
 
 import { Formik, Field, Form, ErrorMessage } from "formik"
 
-import {ClientData} from './ClientData'
+import { ClientData } from './ClientData'
 
 export const ClientChart = () => {
   return (
@@ -17,12 +17,14 @@ export const ClientChart = () => {
 
       <Formik
         initialValues={{
-          name: '',
+          firstName: '',
+          lastName: '',
           email: '',
           phone: '',
         }}
         validationSchema={Yup.object({
-          name: Yup.string().required('Name is required'),
+          firstName: Yup.string().required('first name is required'),
+          lastName: Yup.string().required('last name is required'),
           email: Yup.string().email('invalid email').required('Email is required'),
           phone: Yup.string().required('Phone is required'),
         })}
@@ -38,6 +40,10 @@ export const ClientChart = () => {
               <Field className="mt-3" name="name" type="text" />
               <p className="help is-danger">
                 <ErrorMessage name="name" />
+              </p>
+              <Field className='mt-3' name="lastName" type="text" placeholder="Last Name" />
+              <p className='help is-danger'>
+                <ErrorMessage name="lastName" />
               </p>
             </div>
           </div>
@@ -61,11 +67,11 @@ export const ClientChart = () => {
               </p>
             </div>
           </div>
+
+          <button className='button is-primary'>Submit</button>
         </Form>
       </Formik>
-      <ClientData />
-      </Fragment>
+    </Fragment>
 
-
-)
+  )
 }
