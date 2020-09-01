@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Yup from 'yup'
-
 import { Formik, Field, Form, ErrorMessage } from "formik"
+
 import { Link } from 'react-router-dom'
 
 import api from 'api'
@@ -91,6 +91,6 @@ export const GetStarted = () => {
           <button className="button is-primary" type="submit">Submit</button>
         </Form>
       </Formik>
-    </section >
+    </section>
   )
 }

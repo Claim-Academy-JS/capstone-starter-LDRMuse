@@ -12,10 +12,14 @@ import "./App.scss"
 function App() {
   return (
     <Router>
-      <ClientChart />
       <Route exact={true} path="/">
         <Home />
+      </Route>
 
+
+      <Route exact={true} path="/client-chart">
+      <Header />
+      <ClientChart />
       </Route>
 
       <Switch>
