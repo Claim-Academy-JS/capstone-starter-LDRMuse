@@ -18,8 +18,8 @@ function App() {
 
 
       <Route exact={true} path="/add-client">
-      <Header />
-      <ClientChart />
+        <Header />
+        <ClientChart />
       </Route>
 
       <Switch>
@@ -35,8 +35,8 @@ function App() {
 
 
         <Route exact path="/view-client">
-        <ClientData />
-          {/* only if user is logged in */}
+          <Header />
+          <ClientData />
         </Route>
       </Switch>
     </Router>
