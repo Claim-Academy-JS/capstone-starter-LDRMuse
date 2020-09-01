@@ -27,16 +27,13 @@ function App() {
           <Header />
           <Login />
         </Route>
-      </Switch>
 
-      <Switch>
         <Route exact={true} path="/users">
           <Header />
           <GetStarted />
         </Route>
-      </Switch>
 
-      <Switch>
+
         <Route exact path="/view-client">
         <ClientData />
           {/* only if user is logged in */}
