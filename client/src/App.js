@@ -4,7 +4,7 @@ import logo from "./logo.svg"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 import { ClientChart, Header, Home, Login } from "./components"
-import { GetStarted } from "components/base/GetStarted"
+import { GetStarted } from "components/views/GetStarted"
 
 import "./App.scss"
 
@@ -26,7 +26,7 @@ function App() {
       </Switch>
 
       <Switch>
-        <Route exact={true} path="/users">
+        <Route exact={true} path="/get-started">
           <Header />
           <GetStarted />
         </Route>
