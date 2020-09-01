@@ -24,7 +24,7 @@ function App() {
       </Switch>
 
       <Switch>
-        <Route exact={true} path="/get-started">
+        <Route exact={true} path="/users">
           <Header />
           <GetStarted />
         </Route>
