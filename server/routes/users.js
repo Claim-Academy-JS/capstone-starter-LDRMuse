@@ -5,10 +5,10 @@ import { addUser } from '../db';
 const router = new Router();
 
 router.get('/', (_, res) => {
-  res.send('<h1>yo</h1>');
+  res.send('<h1>Hello from users</h1>');
 });
 
-router.post('/get-started', async ({ body }, res) => {
+router.post('/add', async ({ body }, res) => {
   try {
     const dbRes = await addUser(body);
     res.status(201);
@@ -18,6 +18,5 @@ router.post('/get-started', async ({ body }, res) => {
     res.status(500).send(error);
   }
 });
-
 
 export default router;

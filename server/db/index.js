@@ -1,12 +1,19 @@
-const express = require('express');
+import client from './client';
 
-const app = express();
-const port = 3000;
+export const addUser = async (newUser) => {
+  try {
+    const insertRes = await client.db('BrowAndArrow').collection('users').insertOne(newUser);
+    return insertRes;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-app.get('/', (_, res) => {
-  res.send('<h1>Hello from Express</h1>');
-});
-
-app.listen(port, () => {
-  console.log(`Wistening at: http://localhost:${port}`);
-});
+export const deleteUser = async () => {
+  try {
+    const deleteRes = await client.db('BrowAndArrow').collection('users').remove();
+    return deleteRes;
+  } catch (error) {
+    console.log(error);
+  }
+};

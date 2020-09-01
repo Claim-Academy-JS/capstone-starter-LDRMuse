@@ -1,12 +1,8 @@
-const path = require('path');
-
 module.exports = {
+  target: 'node',
+  mode: 'development',
   entry: './server.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
   resolve: {
-    modules: [path.resolve(__dirname, 'server'), 'node_modules'],
+    modules: ['server', 'node_modules'],
   },
 };

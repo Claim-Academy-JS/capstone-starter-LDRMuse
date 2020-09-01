@@ -1,10 +1,35 @@
 import React from 'react'
 import * as Yup from 'yup'
 
+import api from '../api'
+
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import { Link } from 'react-router-dom'
 
 export const GetStarted = () => {
+
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  if (!ErrorMessage) {
+  const res = await api.addUser({
+    name,
+    email,
+    username,
+    password
+  })
+  console.log(res)
+}
+}
+
+const handleClick = async () => {
+const res = await api.deleteUser()
+}
+
+//TODO: figure out how to connect these handlers to the formik
+
+
+
   return (
 <section className='has-text-centered'>
       <h1 className='title mt-4'>Get Started</h1>
