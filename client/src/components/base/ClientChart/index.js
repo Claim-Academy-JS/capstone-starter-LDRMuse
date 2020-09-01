@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import * as Yup from 'yup'
 
@@ -7,11 +8,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik"
 import { ClientData } from './ClientData'
 
 export const ClientChart = () => {
-  const [fullName, setFullName] = useState('')
-
-  // if (firstName && lastName) {
-  //   const fullName = setFullName(fullName)
-  // }
+  const history = useHistory()
 
   return (
     <Fragment>
@@ -34,8 +31,9 @@ export const ClientChart = () => {
           email: Yup.string().email('invalid email').required('Email is required'),
           phone: Yup.string().required('Phone is required'),
         })}
-        onSubmit={(values) => {
-          console.log("submission", values)
+        onSubmit={(values, { setSubmitting }) => {
+          history.push('/view-client')
+          setSubmitting(false)
         }}
       >
 
@@ -75,7 +73,7 @@ export const ClientChart = () => {
             </div>
           </div>
 
-          <button className='button is-primary'>Submit</button>
+          <button className='button is-primary' type="submit">Submit</button>
         </Form>
       </Formik>
     </Fragment>
