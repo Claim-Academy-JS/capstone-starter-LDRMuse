@@ -1,13 +1,10 @@
-
 import React from "react"
-import logo from "./logo.svg"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 import { ClientChart, Header, Home, Login } from "./components"
 import { GetStarted } from "components/base/GetStarted"
 
 import "./App.scss"
-
 
 function App() {
   return (
@@ -16,10 +13,9 @@ function App() {
         <Home />
       </Route>
 
-
       <Route exact={true} path="/client-chart">
-      <Header />
-      <ClientChart />
+        <Header />
+        <ClientChart />
       </Route>
 
       <Switch>
@@ -42,7 +38,6 @@ function App() {
         </Route>
       </Switch>
     </Router>
-
   )
 }
 
