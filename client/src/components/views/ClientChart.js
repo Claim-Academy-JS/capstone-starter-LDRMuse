@@ -34,8 +34,8 @@ export const ClientChart = () => {
         onSubmit={(values, { setSubmitting }) => {
           // TODOs{melissa.heying}: Use 'api' route to add client.
           // Only go 2 page if this is successful (i.e. 'try-catch')
-          history.push("/view-client");
           setSubmitting(false);
+          history.push("/clients/data", { values });
         }}
       >
         <Form className="ml-2 has-text-centered">
