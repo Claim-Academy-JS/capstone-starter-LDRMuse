@@ -17,3 +17,12 @@ export const deleteAdmin = async () => {
     console.log(error);
   }
 };
+
+export const addClient = async (newClient) => {
+  try {
+    const insertRes = await client.db('BrowAndArrow').collection('clients').insertOne(newClient);
+    return insertRes;
+  } catch (error) {
+    console.log(error);
+  }
+};
