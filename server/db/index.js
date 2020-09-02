@@ -26,3 +26,12 @@ export const addClient = async (newClient) => {
     console.log(error);
   }
 };
+
+export const deleteClient = async () => {
+  try {
+    const deleteRes = await client.db('BrowAndArrow').collection('clients').remove();
+    return deleteRes;
+  } catch (error) {
+    console.log(error);
+  }
+};

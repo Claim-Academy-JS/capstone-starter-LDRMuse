@@ -19,4 +19,6 @@ router.post('/add', async ({ body }, res) => {
   }
 });
 
+// TODO: Make a delete for deleteClient
+
 export default router;
