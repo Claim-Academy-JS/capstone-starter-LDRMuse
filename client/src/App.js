@@ -36,6 +36,11 @@ function App() {
           <Header />
           <ClientData />
         </Route>
+
+        <Route exact path="/client-chart">
+          <Header />
+          <ClientChart />
+        </Route>
       </Switch>
     </Router>
   );
