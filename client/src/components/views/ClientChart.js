@@ -5,8 +5,11 @@ import * as Yup from "yup";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
 
+import api from 'api'
+
 export const ClientChart = () => {
   const history = useHistory();
+
 
   return (
     <Fragment>
@@ -31,12 +34,18 @@ export const ClientChart = () => {
             .required("Email is required"),
           phone: Yup.string().required("Phone is required"),
         })}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting }) => {
           // TODOs{melissa.heying}: Use 'api' route to add client.
           // Only go 2 page if this is successful (i.e. 'try-catch')
+          if (!ErrorMessage) {
+            await api.addClient({
+              values
+            })
+          }
           setSubmitting(false);
           history.push("/clients/data", { values });
-        }}
+        }
+        }
       >
         <Form className="ml-2 has-text-centered">
           <div className="field">
