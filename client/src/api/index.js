@@ -39,4 +39,11 @@ export default {
     } catch (error) {
       throw error;
   }},
+
+  async deleteClient() {
+    const res = await fetch("http://localhost:5000/clients/delete", {
+      method: "DELETE",
+    });
+    return await res.json();
+  },
 };
