@@ -1,2 +1,2 @@
-// 'views' 📁 is for 'static pages'
-// If you don't have any, you may delete the folder.abs
+export { Home } from "./Home";
+export { GetStarted } from "./GetStarted";

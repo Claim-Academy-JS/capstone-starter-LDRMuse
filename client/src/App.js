@@ -1,8 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { ClientChart, Header, Home, Login, Footer } from "./components";
-import { GetStarted } from "components/base/GetStarted";
+import {
+  ClientChart,
+  GetStarted,
+  Header,
+  Home,
+  Login,
+  Footer,
+} from "./components";
 
 import "./App.scss";
 
