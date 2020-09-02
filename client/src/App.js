@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   ClientChart,
   ClientData,
+  Four04,
   Footer,
   GetStarted,
   Header,
@@ -39,6 +40,10 @@ export const App = () => (
         {/* TODO{melissa.heying}: ⚠️Only if user is logged in! */}
         <Header />
         <ClientData />
+      </Route>
+
+      <Route>
+        <Four04 />
       </Route>
     </Switch>
     <Footer />
