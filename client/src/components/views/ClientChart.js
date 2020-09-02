@@ -15,7 +15,12 @@ export const ClientChart = () => {
     <Fragment>
       <section className="px-4 py-4 has-text-centered mt-4 mb-4">
         <div className="container">
-          <h1 className="title is-2">Add Client</h1>
+          <button className="button is-primary mr-4" type="submit">
+            Add Client
+          </button>
+          <button className="button is-primary" type="submit">
+            Find Client
+          </button>
         </div>
       </section>
 
@@ -41,7 +46,7 @@ export const ClientChart = () => {
             )
             setSubmitting(false);
 
-            history.push("/clients/add", { values });
+            history.push("/clients/data", { values });
 
           } catch (err) {
             console.error(err)
@@ -95,8 +100,8 @@ export const ClientChart = () => {
             </div>
           </div>
 
-          <button className="button is-primary" type="submit">
-            Submit
+          <button className="button is-primary mr-4" type="submit">
+            Add Client
           </button>
         </Form>
       </Formik>
