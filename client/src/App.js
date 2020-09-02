@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { ClientChart, Header, Home, Login } from "./components"
+import { ClientChart, Header, Home, Login, Footer } from "./components";
 import { GetStarted } from "components/base/GetStarted";
 
 import "./App.scss";
