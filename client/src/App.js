@@ -6,6 +6,8 @@ import { ClientChart, Header, Home, Login, ClientData } from "./components";
 import { GetStarted } from "components/base/GetStarted";
 
 import "./App.scss";
+import { ClientChart, Header, Home, Login, ClientData } from "./components"
+import { GetStarted } from "components/base/GetStarted"
 
 function App() {
   return (

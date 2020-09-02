@@ -40,10 +40,10 @@ export const ClientChart = () => {
         <Form className='ml-2 has-text-centered'>
           <div className='field'>
             <label htmlFor="name">Client Name</label>
-            <div className="control">
-              <Field className="mt-3" name="name" type="text" />
-              <p className="help is-danger">
-                <ErrorMessage name="name" />
+            <div className='control'>
+              <Field className='mt-3' name="firstName" type="text" placeholder="First Name" />
+              <p className='help is-danger'>
+                <ErrorMessage name="firstName" />
               </p>
               <Field className='mt-3' name="lastName" type="text" placeholder="Last Name" />
               <p className='help is-danger'>
