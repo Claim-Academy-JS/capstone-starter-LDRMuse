@@ -1,6 +1,7 @@
-export {Home} from './views/Home'
-export {Header} from './views/Header'
-export {Login} from './base/Login'
-export { Footer } from "./Footer";
+export { Home } from "./views/Home";
 
-export { ClientChart } from './base/ClientChart'
+export { Header } from "./Header";
+export { Footer } from "./Footer";
+export { Login } from "./base/Login";
+
+export { ClientChart } from "./base/ClientChart";
