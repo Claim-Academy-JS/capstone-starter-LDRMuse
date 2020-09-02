@@ -36,7 +36,7 @@ export const App = () => (
       </Route>
 
       <Route exact path="/clients/data">
-        {/* only if user is logged in */}
+        {/* TODO{melissa.heying}: ⚠️Only if user is logged in! */}
         <Header />
         <ClientData />
       </Route>
