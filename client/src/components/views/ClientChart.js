@@ -35,15 +35,18 @@ export const ClientChart = () => {
           phone: Yup.string().required("Phone is required"),
         })}
         onSubmit={async (values, { setSubmitting }) => {
-          // TODOs{melissa.heying}: Use 'api' route to add client.
-          // Only go 2 page if this is successful (i.e. 'try-catch')
-          if (!ErrorMessage) {
-            await api.addClient({
+          try {
+            const res = await api.addClient(
               values
-            })
+            )
+            setSubmitting(false);
+
+            history.push("/clients/add", { values });
+
+          } catch (err) {
+            console.error(err)
           }
-          setSubmitting(false);
-          history.push("/clients/data", { values });
+
         }
         }
       >

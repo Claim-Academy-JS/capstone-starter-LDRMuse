@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 
 import admin from './routes/admin';
+import clients from './routes/clients';
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.get('/', (_, res) => {
 });
 
 app.use('/admin', admin);
+app.use('/clients', clients);
 
 app.use((_, res) => {
   res.status(404).send('Sorry cannot find that!');
