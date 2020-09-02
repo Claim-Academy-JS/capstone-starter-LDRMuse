@@ -1,13 +1,11 @@
+import React from "react";
+import logo from "./logo.svg";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import React from "react"
-import logo from "./logo.svg"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { ClientChart, Header, Home, Login, ClientData } from "./components";
+import { GetStarted } from "components/base/GetStarted";
 
-import { ClientChart, Header, Home, Login, ClientData } from "./components"
-import { GetStarted } from "components/base/GetStarted"
-
-import "./App.scss"
-
+import "./App.scss";
 
 function App() {
   return (
@@ -15,7 +13,6 @@ function App() {
       <Route exact={true} path="/">
         <Home />
       </Route>
-
 
       <Route exact={true} path="/add-client">
         <Header />
@@ -33,15 +30,13 @@ function App() {
           <GetStarted />
         </Route>
 
-
         <Route exact path="/view-client">
           <Header />
           <ClientData />
         </Route>
       </Switch>
     </Router>
-
-  )
+  );
 }
 
-export default App
+export default App;
