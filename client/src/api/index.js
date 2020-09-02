@@ -1,12 +1,12 @@
 export default {
-  async addUser(newUser) {
+  async addAdmin(newAdmin) {
     try {
-      const res = await fetch("http://localhost:5000/users/add", {
+      const res = await fetch("http://localhost:5000/admin/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newUser),
+        body: JSON.stringify(newAdmin),
       });
       if (res.status > 400) {
         throw new Error("Unable to fetch from server");
@@ -16,8 +16,8 @@ export default {
       throw error;
     }
   },
-  async deleteUser() {
-    const res = await fetch("http://localhost:5000/users/delete", {
+  async deleteAdmin() {
+    const res = await fetch("http://localhost:5000/admin/delete", {
       method: "DELETE",
     });
     return await res.json();

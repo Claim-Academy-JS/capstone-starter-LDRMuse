@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { addUser } from '../db';
+import { addAdmin } from '../db';
 
 const router = new Router();
 
@@ -10,7 +10,7 @@ router.get('/', (_, res) => {
 
 router.post('/add', async ({ body }, res) => {
   try {
-    const dbRes = await addUser(body);
+    const dbRes = await addAdmin(body);
     res.status(201);
     res.json(dbRes);
   } catch (error) {

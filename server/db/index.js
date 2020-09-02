@@ -1,15 +1,15 @@
 import client from './client';
 
-export const addUser = async (newUser) => {
+export const addAdmin = async (newAdmin) => {
   try {
-    const insertRes = await client.db('BrowAndArrow').collection('users').insertOne(newUser);
+    const insertRes = await client.db('BrowAndArrow').collection('users').insertOne(newAdmin);
     return insertRes;
   } catch (error) {
     console.log(error);
   }
 };
 
-export const deleteUser = async () => {
+export const deleteAdmin = async () => {
   try {
     const deleteRes = await client.db('BrowAndArrow').collection('users').remove();
     return deleteRes;
