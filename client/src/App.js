@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   ClientChart,
   ClientData,
+  Footer,
   GetStarted,
   Header,
   Home,
@@ -15,23 +16,23 @@ import "./App.scss";
 export const App = () => (
   <Router>
     <Switch>
-      <Route exact={true} path="/">
+      <Route exact path="/">
         <Home />
       </Route>
 
-      <Route exact={true} path="/client-chart">
-        <Header />
-        <ClientChart />
-      </Route>
-
-      <Route exact={true} path="/login">
+      <Route exact path="/login">
         <Header />
         <Login />
       </Route>
 
-      <Route exact path="/clients/add">
+      <Route exact path="/get-started">
         <Header />
         <GetStarted />
+      </Route>
+
+      <Route exact path="/clients/add">
+        <Header />
+        <ClientChart />
       </Route>
 
       <Route exact path="/clients/data">
