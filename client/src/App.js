@@ -37,6 +37,8 @@ export const App = () => (
 
       <Route exact path="/clients/data">
         {/* only if user is logged in */}
+        <Header />
+        <ClientData />
       </Route>
     </Switch>
     <Footer />
