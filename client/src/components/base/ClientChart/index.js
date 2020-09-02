@@ -1,8 +1,8 @@
-import React, { Fragment } from "react"
+import React, { Fragment } from "react";
 
-import * as Yup from "yup"
+import * as Yup from "yup";
 
-import { Formik, Field, Form, ErrorMessage } from "formik"
+import { Formik, Field, Form, ErrorMessage } from "formik";
 
 export const ClientChart = () => {
   return (
@@ -49,7 +49,7 @@ export const ClientChart = () => {
           additionalNotes: Yup.string().required("required"),
         })}
         onSubmit={(values) => {
-          console.log("submission", values)
+          console.log("submission", values);
         }}
       >
         <Form className="ml-2">
@@ -173,5 +173,5 @@ export const ClientChart = () => {
         </Form>
       </Formik>
     </Fragment>
-  )
-}
+  );
+};
