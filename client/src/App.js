@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import {
   ClientChart,
+  ClientData,
   GetStarted,
   Header,
   Home,
   Login,
-  Footer,
 } from "./components";
 
 import "./App.scss";
@@ -29,12 +29,12 @@ export const App = () => (
         <Login />
       </Route>
 
-      <Route exact={true} path="/users">
+      <Route exact path="/clients/add">
         <Header />
         <GetStarted />
       </Route>
 
-      <Route exact path="/client-chart">
+      <Route exact path="/clients/data">
         {/* only if user is logged in */}
       </Route>
     </Switch>

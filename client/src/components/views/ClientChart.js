@@ -32,6 +32,9 @@ export const ClientChart = () => {
           phone: Yup.string().required("Phone is required"),
         })}
         onSubmit={(values, { setSubmitting }) => {
+          // TODOs{melissa.heying}: Use 'api' route to find by name.
+          // Only go 2 page if someone is found.
+          // 'useState' 'notFound', which should 'conditionally render' an appropriate message.
           history.push("/view-client");
           setSubmitting(false);
         }}
