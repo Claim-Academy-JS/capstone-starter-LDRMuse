@@ -1,10 +1,10 @@
-import React from "react"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { ClientChart, Header, Home, Login } from "./components"
-import { GetStarted } from "components/base/GetStarted"
+import { GetStarted } from "components/base/GetStarted";
 
-import "./App.scss"
+import "./App.scss";
 
 function App() {
   return (
@@ -41,4 +41,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
