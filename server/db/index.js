@@ -2,7 +2,7 @@ import client from './client';
 
 export const addAdmin = async (newAdmin) => {
   try {
-    const insertRes = await client.db('BrowAndArrow').collection('users').insertOne(newAdmin);
+    const insertRes = await client.db('BrowAndArrow').collection('admins').insertOne(newAdmin);
     return insertRes;
   } catch (error) {
     console.log(error);
@@ -11,7 +11,7 @@ export const addAdmin = async (newAdmin) => {
 
 export const deleteAdmin = async () => {
   try {
-    const deleteRes = await client.db('BrowAndArrow').collection('users').remove();
+    const deleteRes = await client.db('BrowAndArrow').collection('admins').remove();
     return deleteRes;
   } catch (error) {
     console.log(error);

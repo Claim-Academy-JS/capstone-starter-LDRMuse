@@ -5,7 +5,7 @@ import { addAdmin } from '../db';
 const router = new Router();
 
 router.get('/', (_, res) => {
-  res.send('<h1>Hello from users</h1>');
+  res.send('<h1>Hello from admins</h1>');
 });
 
 router.post('/add', async ({ body }, res) => {
