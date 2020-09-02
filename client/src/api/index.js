@@ -38,7 +38,8 @@ export default {
       return await res.json();
     } catch (error) {
       throw error;
-  }},
+    }
+  },
 
   async deleteClient() {
     const res = await fetch("http://localhost:5000/clients/delete", {
@@ -46,4 +47,31 @@ export default {
     });
     return await res.json();
   },
+
+  async addChartEntry(client, chart) {
+    try {
+      const res = await fetch("http://localhost:5000/clients/data", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // body: JSON.stringify({ client: client, chart: chart }),
+        body: JSON.stringify({ client, chart }),
+      });
+      if (res.status > 400) {
+        throw new Error("Unable to fetch from server");
+      }
+      return await res.json();
+    } catch (error) {
+      throw error;
+    }
+  },
+
+
+
+
+
+
+
+
 };

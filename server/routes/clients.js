@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { addClient } from '../db';
+import { addClient, addChartEntry } from '../db';
 
 const router = new Router();
 
@@ -19,6 +19,15 @@ router.post('/add', async ({ body }, res) => {
   }
 });
 
-// TODO: Make a delete for deleteClient
+router.patch('/data', async ({ body }, res) => {
+  try {
+    const dbRes = await addChartEntry(body.client, body.chart);
+    res.status(201);
+    res.json(dbRes);
+  } catch (error) {
+    error.message = 'Database Error';
+    res.status(500).send(error);
+  }
+});
 
 export default router;

@@ -51,11 +51,9 @@ export const EnterClient = () => {
           } catch (err) {
             console.error(err)
           }
-
-        }
-        }
+        }}
       >
-        <Form className="ml-2 has-text-centered">
+        <Form className="box ml-2 has-text-centered">
           <div className="field">
             <label htmlFor="name">Client Name</label>
             <div className="control">

@@ -5,10 +5,12 @@ import * as Yup from "yup";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
 
+import api from 'api'
+
 export const ClientData = () => {
   // Destructure values passed in via 'useHistory'
   const {
-    state: { values },
+    state: { values: person },
   } = useLocation();
 
   return (
@@ -16,7 +18,7 @@ export const ClientData = () => {
       <section className="px-4 py-4 mt-4">
         <div className="container">
           <h2 className="title is-5">
-            Chart Entry for {values.firstName} {values.lastName}
+            Chart Entry for {person.firstName} {person.lastName}
           </h2>
         </div>
       </section>
@@ -42,11 +44,19 @@ export const ClientData = () => {
           priceOfService: Yup.string().required("required"),
           additionalNotes: Yup.string().required("required"),
         })}
-        onSubmit={(values) => {
-          console.log("submission", values);
+        onSubmit={async (chartData) => {
+          console.log('chart data', chartData)
+          try {
+            const res = await api.addChartEntry(
+              person, chartData
+            )
+          } catch (err) {
+            console.error(err)
+          }
+
         }}
       >
-        <Form className="ml-2">
+        <Form className="box ml-2">
           <div className="field">
             <label htmlFor="dateOfService">Date of Service</label>
             <div className="control">
@@ -126,6 +136,9 @@ export const ClientData = () => {
               </p>
             </div>
           </div>
+          <button className="button is-primary mr-4" type="submit">
+            Add Chart Entry
+          </button>
         </Form>
       </Formik>
     </Fragment>

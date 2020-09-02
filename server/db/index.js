@@ -35,3 +35,12 @@ export const deleteClient = async () => {
     console.log(error);
   }
 };
+
+export const addChartEntry = async (person, chart) => {
+  try {
+    const insertRes = await client.db('BrowAndArrow').collection('clients').updateOne(person, { $push: { charts: chart } });
+    return insertRes;
+  } catch (error) {
+    console.log(error);
+  }
+};
