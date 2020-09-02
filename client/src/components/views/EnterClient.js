@@ -7,7 +7,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 
 import api from 'api'
 
-export const ClientChart = () => {
+export const EnterClient = () => {
   const history = useHistory();
 
 

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import {
-  ClientChart,
+  EnterClient,
   ClientData,
   Four04,
   Footer,
@@ -33,7 +33,7 @@ export const App = () => (
 
       <Route exact path="/clients/add">
         <Header />
-        <ClientChart />
+        <EnterClient />
       </Route>
 
       <Route exact path="/clients/data">
