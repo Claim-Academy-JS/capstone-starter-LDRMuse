@@ -8,7 +8,7 @@ router.get('/', (_, res) => {
   res.send('<h1>Hello from admins</h1>');
 });
 
-router.post('/add', async ({ body }, res) => {
+router.post('/create', async ({ body }, res) => {
   try {
     const dbRes = await addAdmin(body);
     res.status(201);

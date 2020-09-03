@@ -1,11 +1,15 @@
 import React from "react";
-import * as Yup from "yup";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+
+import api from "api";
 
 export const Login = () => {
+  const adminApi = api("admin");
+
   return (
     <section className="has-text-centered">
       <h1 className="title mt-4">Login</h1>
@@ -21,35 +25,47 @@ export const Login = () => {
             .max(12)
             .required("password is required"),
         })}
-        onSubmit={(values) => {
-          // TODO{melissa.heying} Use 'api' to login here
-          console.log("submission, values");
+        onSubmit={(newAdmin, { setSubmitting }) => {
+          try {
+            adminApi.create(newAdmin);
+            setSubmitting(false);
+            console.log(newAdmin, "aad,");
+          } catch (err) {
+            setSubmitting(false);
+            console.log(err);
+          }
         }}
       >
-        <Form className="has-text-centered mt-4">
-          <div className="field">
-            <label htmlFor="username">Username</label>
-            <div className="control">
-              <Field className="mt-3" name="username" type="text" />
-              <p className="help is-danger">
-                <ErrorMessage name="username" />
-              </p>
+        {({ isSubmitting }) => (
+          <Form className="has-text-centered mt-4">
+            <div className="field">
+              <label htmlFor="username">Username</label>
+              <div className="control">
+                <Field className="mt-3" name="username" type="text" />
+                <p className="help is-danger">
+                  <ErrorMessage name="username" />
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="field">
-            <label htmlFor="password">Password</label>
-            <div className="control">
-              <Field className="mt-3" name="password" type="password" />
-              <p className="help is-danger">
-                <ErrorMessage name="password" />
-              </p>
+            <div className="field">
+              <label htmlFor="password">Password</label>
+              <div className="control">
+                <Field className="mt-3" name="password" type="password" />
+                <p className="help is-danger">
+                  <ErrorMessage name="password" />
+                </p>
+              </div>
             </div>
-          </div>
-          <button className="button is-primary" type="submit">
-            Submit
-          </button>
-        </Form>
+            <button
+              className="button is-primary"
+              type="submit"
+              disabled={isSubmitting}
+            >
+              Submit
+            </button>
+          </Form>
+        )}
       </Formik>
     </section>
   );
