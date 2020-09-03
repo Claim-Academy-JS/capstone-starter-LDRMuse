@@ -1,11 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 
-import admin from './routes/admin';
-import clients from './routes/clients';
+import adminRouter from './routes/admin';
+import clientsRouter from './routes/clients';
 
 const app = express();
 
+// We accept any client requests...but only  CORS allowed for...
 app.use(cors({
   origin: 'http://localhost:3000',
 }));
@@ -16,8 +17,8 @@ app.get('/', (_, res) => {
   res.send('<h1>Express</h1>');
 });
 
-app.use('/admin', admin);
-app.use('/clients', clients);
+app.use('/admin', adminRouter);
+app.use('/clients', clientsRouter);
 
 app.use((_, res) => {
   res.status(404).send('Sorry cannot find that!');
