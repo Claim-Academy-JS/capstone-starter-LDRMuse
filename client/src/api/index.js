@@ -1,77 +1,34 @@
-export default {
-  async addAdmin(newAdmin) {
-    try {
-      const res = await fetch("http://localhost:5000/admin/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newAdmin),
-      });
-      if (res.status > 400) {
-        throw new Error("Unable to fetch from server");
-      }
-      return await res.json();
-    } catch (error) {
-      throw error;
-    }
+import dotenv from "dotenv";
+dotenv.config();
+
+const baseUrl = process.env.REACT_APP_BASE_URL;
+
+// Factory Function
+export default (route) => ({
+  async create(payload) {
+    const res = await fetch(`${baseUrl}${route}/create`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    return res.json();
   },
-  async deleteAdmin() {
-    const res = await fetch("http://localhost:5000/admin/delete", {
+
+  show(id) {},
+
+  getAll() {
+    console.log("triyng to get all", route);
+  },
+
+  update(payload, id) {},
+
+  async delete() {
+    const res = await fetch(`${baseUrl}${route}/delete`, {
       method: "DELETE",
     });
     return await res.json();
   },
-
-  async addClient(newClient) {
-    try {
-      const res = await fetch("http://localhost:5000/clients/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newClient),
-      });
-      if (res.status > 400) {
-        throw new Error("Unable to fetch from server");
-      }
-      return await res.json();
-    } catch (error) {
-      throw error;
-    }
-  },
-
-  async deleteClient() {
-    const res = await fetch("http://localhost:5000/clients/delete", {
-      method: "DELETE",
-    });
-    return await res.json();
-  },
-
-  async addChartEntry(client, chart) {
-    try {
-      const res = await fetch("http://localhost:5000/clients/data", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        // body: JSON.stringify({ client: client, chart: chart }),
-        body: JSON.stringify({ client, chart }),
-      });
-      if (res.status > 400) {
-        throw new Error("Unable to fetch from server");
-      }
-      return await res.json();
-    } catch (error) {
-      throw error;
-    }
-  },
-
-
-
-
-
-
-
-
-};
+});
