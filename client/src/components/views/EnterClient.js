@@ -5,11 +5,10 @@ import * as Yup from "yup";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
 
-import api from 'api'
+import api from "api";
 
 export const EnterClient = () => {
   const history = useHistory();
-
 
   return (
     <Fragment>
@@ -41,15 +40,12 @@ export const EnterClient = () => {
         })}
         onSubmit={async (values, { setSubmitting }) => {
           try {
-            const res = await api.addClient(
-              values
-            )
+            const res = await api.addClient(values);
             setSubmitting(false);
 
             history.push("/clients/data", { values });
-
           } catch (err) {
-            console.error(err)
+            console.error(err);
           }
         }}
       >

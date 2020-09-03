@@ -5,7 +5,7 @@ import * as Yup from "yup";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
 
-import api from 'api'
+import api from "api";
 
 export const ClientData = () => {
   // Destructure values passed in via 'useHistory'
@@ -45,15 +45,12 @@ export const ClientData = () => {
           additionalNotes: Yup.string().required("required"),
         })}
         onSubmit={async (chartData) => {
-          console.log('chart data', chartData)
+          console.log("chart data", chartData);
           try {
-            const res = await api.addChartEntry(
-              person, chartData
-            )
+            const res = await api.addChartEntry(person, chartData);
           } catch (err) {
-            console.error(err)
+            console.error(err);
           }
-
         }}
       >
         <Form className="box ml-2">
