@@ -10,7 +10,7 @@ import api from "api";
 export const ClientChartEntry = () => {
   // Destructure values passed in via 'useHistory'
   const {
-    state: { values: person },
+    state: { newClient },
   } = useLocation();
 
   return (
@@ -18,7 +18,7 @@ export const ClientChartEntry = () => {
       <section className="px-4 py-4 mt-4">
         <div className="container">
           <h2 className="title is-5">
-            Chart Entry for {person.firstName} {person.lastName}
+            Chart Entry for {newClient.firstName} {newClient.lastName}
           </h2>
         </div>
       </section>
@@ -44,10 +44,10 @@ export const ClientChartEntry = () => {
           priceOfService: Yup.string().required("required"),
           additionalNotes: Yup.string().required("required"),
         })}
-        onSubmit={async (chartData) => {
+        onSubmit={async (values, chartData) => {
           console.log("chart data", chartData);
           try {
-            const res = await api.addChartEntry(person, chartData);
+            const res = await api.addChartEntry(values, chartData);
           } catch (err) {
             console.error(err);
           }

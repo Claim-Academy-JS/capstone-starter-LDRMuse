@@ -10,6 +10,8 @@ import api from "api";
 export const CreateOrSearchClient = () => {
   const history = useHistory();
 
+  const clientsAPI = api("clients");
+
   return (
     <Fragment>
       <section className="px-4 py-4 has-text-centered mt-4 mb-4">
@@ -38,13 +40,13 @@ export const CreateOrSearchClient = () => {
             .required("Email is required"),
           phone: Yup.string().required("Phone is required"),
         })}
-        onSubmit={async (values, { setSubmitting }) => {
+        onSubmit={async (newClient, { setSubmitting }) => {
           try {
-            const res = await api.addClient(values);
+            clientsAPI.create(newClient);
             setSubmitting(false);
-
-            history.push("/clients/chart-entry", { values });
+            history.push("/clients/chart-entry", { newClient });
           } catch (err) {
+            setSubmitting(false);
             console.error(err);
           }
         }}
