@@ -5,6 +5,8 @@ import * as Yup from "yup";
 
 import { useLocation } from "react-router-dom";
 
+import { Options } from "./Options";
+
 import api from "api";
 
 export const Login = () => {
@@ -24,7 +26,6 @@ export const Login = () => {
 
   return (
     <section className="mt-5 ml-5 mr-5 box has-text-centered">
-      <h1 className="title mt-4">Admin Login</h1>
       <Formik
         initialValues={{
           name: "",
@@ -53,22 +54,21 @@ export const Login = () => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form className="has-text-centered mt-6">
-            {/* {!loginMode ? ( */}
-            <div className="field">
-              {/* <h1 className="title">Get Started</h1> */}
-              <label htmlFor="name">Name</label>
-              <div className="control">
-                <Field className="mt-3" name="name" type="text" />
-                <p className="help is-danger">
-                  <ErrorMessage name="name" />
-                </p>
+          <Form className="has-text-centered mt-2">
+            {!loginMode ? (
+              <div className="field">
+                <h1 className="title">Get Started</h1>
+                <label htmlFor="name">Name</label>
+                <div className="control">
+                  <Field className="mt-3" name="name" type="text" />
+                  <p className="help is-danger">
+                    <ErrorMessage name="name" />
+                  </p>
+                </div>
               </div>
-            </div>
-            {/* ) : (
+            ) : (
               <h1 className="title mt-4">Admin Login</h1>
-            )} */}
-
+            )}
             <div className="field">
               <label htmlFor="email">Email</label>
               <div className="control">
@@ -78,16 +78,17 @@ export const Login = () => {
                 </p>
               </div>
             </div>
-
-            <div className="field">
-              <label htmlFor="password">Password</label>
-              <div className="control">
-                <Field className="mt-3" name="password" type="password" />
-                <p className="help is-danger">
-                  <ErrorMessage name="password" />
-                </p>
+            {!forgotMode ? (
+              <div className="field">
+                <label htmlFor="password">Password</label>
+                <div className="control">
+                  <Field className="mt-3" name="password" type="password" />
+                  <p className="help is-danger">
+                    <ErrorMessage name="password" />
+                  </p>
+                </div>
               </div>
-            </div>
+            ) : null}
             <button
               className="button is-primary"
               type="submit"
@@ -98,6 +99,11 @@ export const Login = () => {
           </Form>
         )}
       </Formik>
+      <Options
+        loginMode={loginMode}
+        handler={handleToggle}
+        forgotMode={forgotMode}
+      />
     </section>
   );
 };
