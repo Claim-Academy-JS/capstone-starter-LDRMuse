@@ -7,7 +7,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 
 import api from "api";
 
-export const EnterClient = () => {
+export const CreateOrSearchClient = () => {
   const history = useHistory();
 
   return (
@@ -43,7 +43,7 @@ export const EnterClient = () => {
             const res = await api.addClient(values);
             setSubmitting(false);
 
-            history.push("/clients/data", { values });
+            history.push("/clients/chart-entry", { values });
           } catch (err) {
             console.error(err);
           }

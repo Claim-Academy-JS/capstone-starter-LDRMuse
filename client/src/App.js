@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import {
-  EnterClient,
+  CreateOrSearchClient,
   ClientChartEntry,
   Four04,
   Footer,
@@ -31,9 +31,9 @@ export const App = () => (
         <GetStarted />
       </Route>
 
-      <Route exact path="/clients/add">
+      <Route exact path="/clients/create">
         <Header />
-        <EnterClient />
+        <CreateOrSearchClient />
       </Route>
 
       <Route exact path="/clients/chart-entry">

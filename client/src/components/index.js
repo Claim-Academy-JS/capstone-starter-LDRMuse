@@ -2,7 +2,7 @@ export {
   Home,
   GetStarted,
   Login,
-  EnterClient,
+  CreateOrSearchClient,
   ClientChartEntry,
   Four04,
 } from "./views";
