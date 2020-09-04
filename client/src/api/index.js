@@ -22,8 +22,18 @@ export default (route) => ({
   getAll() {
     console.log("triyng to get all", route);
   },
+  //TODO add entry to client
+  async update(nestedItem) {
+    const res = await fetch(`${baseUrl}${route}/chart-entry`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(nestedItem),
+    });
 
-  update(payload, id) {},
+    return res.json();
+  },
 
   async delete() {
     const res = await fetch(`${baseUrl}${route}/delete`, {

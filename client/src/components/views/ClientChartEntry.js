@@ -13,6 +13,8 @@ export const ClientChartEntry = () => {
     state: { newClient },
   } = useLocation();
 
+  const clientChartAPI = api("clients");
+
   return (
     <Fragment>
       <section className="px-4 py-4 mt-4">
@@ -45,9 +47,8 @@ export const ClientChartEntry = () => {
           additionalNotes: Yup.string().required("required"),
         })}
         onSubmit={async (values, chartData) => {
-          console.log("chart data", chartData);
           try {
-            const res = await api.addChartEntry(values, chartData);
+            clientChartAPI.update(values, chartData);
           } catch (err) {
             console.error(err);
           }
