@@ -7,7 +7,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 
 import api from "api";
 
-export const ClientData = () => {
+export const ClientChartEntry = () => {
   // Destructure values passed in via 'useHistory'
   const {
     state: { values: person },

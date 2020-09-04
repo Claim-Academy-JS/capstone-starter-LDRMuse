@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import {
   EnterClient,
-  ClientData,
+  ClientChartEntry,
   Four04,
   Footer,
   GetStarted,
@@ -36,10 +36,10 @@ export const App = () => (
         <EnterClient />
       </Route>
 
-      <Route exact path="/clients/data">
+      <Route exact path="/clients/chart-entry">
         {/* TODO{melissa.heying}: ⚠️Only if user is logged in! */}
         <Header />
-        <ClientData />
+        <ClientChartEntry />
       </Route>
 
       <Route>

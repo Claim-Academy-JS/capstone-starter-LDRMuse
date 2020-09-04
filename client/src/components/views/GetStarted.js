@@ -33,7 +33,6 @@ export const GetStarted = () => {
           try {
             adminApi.create(newAdmin);
             setSubmitting(false);
-            console.log(newAdmin, "aad,");
           } catch (err) {
             setSubmitting(false);
             console.log(err);

@@ -8,7 +8,7 @@ router.get('/', (_, res) => {
   res.send('<h1>Hello from clients</h1>');
 });
 
-router.post('/add', async ({ body }, res) => {
+router.post('/create', async ({ body }, res) => {
   try {
     const dbRes = await addClient(body);
     res.status(201);
@@ -19,7 +19,7 @@ router.post('/add', async ({ body }, res) => {
   }
 });
 
-router.patch('/data', async ({ body }, res) => {
+router.patch('/chart-entry', async ({ body }, res) => {
   try {
     const dbRes = await addChartEntry(body.client, body.chart);
     res.status(201);
