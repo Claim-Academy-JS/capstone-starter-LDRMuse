@@ -22,17 +22,23 @@ export default (route) => ({
   getAll() {
     console.log("triyng to get all", route);
   },
-  //TODO add entry to client
-  async update(nestedItem) {
-    const res = await fetch(`${baseUrl}${route}/chart-entry`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(nestedItem),
-    });
 
-    return res.json();
+  async update(chart, email) {
+    try {
+      const res = await fetch(`${baseUrl}${route}/chart-entry`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ chart, email }),
+      });
+      if (res.status > 400) {
+        throw new Error("Unable to fetch from server");
+      }
+      return await res.json();
+    } catch (error) {
+      throw error;
+    }
   },
 
   async delete() {

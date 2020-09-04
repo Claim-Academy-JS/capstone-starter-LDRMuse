@@ -10,7 +10,9 @@ import api from "api";
 export const ClientChartEntry = () => {
   // Destructure values passed in via 'useHistory'
   const {
-    state: { newClient },
+    state: {
+      newClient: { firstName, lastName, email },
+    },
   } = useLocation();
 
   const clientChartAPI = api("clients");
@@ -20,7 +22,7 @@ export const ClientChartEntry = () => {
       <section className="px-4 py-4 mt-4">
         <div className="container">
           <h2 className="title is-5">
-            Chart Entry for {newClient.firstName} {newClient.lastName}
+            Chart Entry for {firstName} {lastName}
           </h2>
         </div>
       </section>
@@ -36,19 +38,19 @@ export const ClientChartEntry = () => {
           priceOfService: "",
           additionalNotes: "",
         }}
-        validationSchema={Yup.object({
-          dateOfService: Yup.string().required("required"),
-          typeOfService: Yup.string().required("required"),
-          pigmentBrand: Yup.string().required("required"),
-          colorFormula: Yup.string().required("required"),
-          needleBladeBrand: Yup.string().required("required"),
-          needleBladeSize: Yup.string().required("required"),
-          priceOfService: Yup.string().required("required"),
-          additionalNotes: Yup.string().required("required"),
-        })}
-        onSubmit={async (values, chartData) => {
+        // validationSchema={Yup.object({
+        //   dateOfService: Yup.string().required("required"),
+        //   typeOfService: Yup.string().required("required"),
+        //   pigmentBrand: Yup.string().required("required"),
+        //   colorFormula: Yup.string().required("required"),
+        //   needleBladeBrand: Yup.string().required("required"),
+        //   needleBladeSize: Yup.string().required("required"),
+        //   priceOfService: Yup.string().required("required"),
+        //   additionalNotes: Yup.string().required("required"),
+        // })}
+        onSubmit={async (chartValues, { setSubmitting }) => {
           try {
-            clientChartAPI.update(values, chartData);
+            clientChartAPI.update(chartValues, email);
           } catch (err) {
             console.error(err);
           }

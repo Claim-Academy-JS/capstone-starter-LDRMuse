@@ -19,9 +19,9 @@ router.post('/create', async ({ body }, res) => {
   }
 });
 
-router.patch('/chart-entry', async ({ body }, res) => {
+router.patch('/chart-entry', async ({ body: { client, chart } }, res) => {
   try {
-    const dbRes = await addChartEntry(body.client, body.chart);
+    const dbRes = await addChartEntry(client, chart);
     res.status(201);
     res.json(dbRes);
   } catch (error) {
