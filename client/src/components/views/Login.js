@@ -11,8 +11,8 @@ export const Login = () => {
   const adminApi = api("admin");
 
   return (
-    <section className="has-text-centered">
-      <h1 className="title mt-4">Login</h1>
+    <section className="mt-5 ml-5 mr-5 box has-text-centered">
+      <h1 className="title mt-4">Admin Login</h1>
       <Formik
         initialValues={{
           username: "",
