@@ -1,25 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-// import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import api from "api";
 
 export const Login = () => {
   const adminApi = api("admin");
+  const location = useLocation();
+  const [loginMode, setLoginMode] = useState(location.search.includes("login"));
+  const [forgotMode, setForgotMode] = useState(false);
+
+  const handleToggle = (event) => {
+    if (event.target.textContent.includes("Forgot")) {
+      setForgotMode((prev) => !prev);
+    } else {
+      setForgotMode(false);
+      setLoginMode((prev) => !prev);
+    }
+  };
 
   return (
     <section className="mt-5 ml-5 mr-5 box has-text-centered">
       <h1 className="title mt-4">Admin Login</h1>
       <Formik
         initialValues={{
-          username: "",
+          name: "",
+          email: "",
           password: "",
         }}
         validationSchema={Yup.object({
-          username: Yup.string().required("username is required"),
+          name: Yup.string().required("Name is required"),
+          email: Yup.string()
+            .email("invalid email")
+            .required("Email is required"),
           password: Yup.string()
             .min(6)
             .max(12)
@@ -37,13 +53,28 @@ export const Login = () => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form className="has-text-centered mt-4">
+          <Form className="has-text-centered mt-6">
+            {/* {!loginMode ? ( */}
             <div className="field">
-              <label htmlFor="username">Username</label>
+              {/* <h1 className="title">Get Started</h1> */}
+              <label htmlFor="name">Name</label>
               <div className="control">
-                <Field className="mt-3" name="username" type="text" />
+                <Field className="mt-3" name="name" type="text" />
                 <p className="help is-danger">
-                  <ErrorMessage name="username" />
+                  <ErrorMessage name="name" />
+                </p>
+              </div>
+            </div>
+            {/* ) : (
+              <h1 className="title mt-4">Admin Login</h1>
+            )} */}
+
+            <div className="field">
+              <label htmlFor="email">Email</label>
+              <div className="control">
+                <Field className="mt-3" name="email" type="text" />
+                <p className="help is-danger">
+                  <ErrorMessage name="email" />
                 </p>
               </div>
             </div>
