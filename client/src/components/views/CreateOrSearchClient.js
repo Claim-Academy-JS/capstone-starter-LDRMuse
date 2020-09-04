@@ -42,7 +42,7 @@ export const CreateOrSearchClient = () => {
         })}
         onSubmit={async (newClient, { setSubmitting }) => {
           try {
-            clientsAPI.create(newClient);
+            clientsAPI.create({ ...newClient, charts: [] });
             setSubmitting(false);
             history.push("/clients/chart-entry", { newClient });
           } catch (err) {

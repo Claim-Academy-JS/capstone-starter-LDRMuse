@@ -36,9 +36,10 @@ export const deleteClient = async () => {
   }
 };
 
-export const addChartEntry = async (person, chart) => {
+export const addChartEntry = async (chart, email) => {
+  console.log(chart);
   try {
-    const insertRes = await client.db('BrowAndArrow').collection('clients').updateOne(person, { $push: { charts: chart } });
+    const insertRes = await client.db('BrowAndArrow').collection('clients').update({ email }, { $push: { charts: chart } });
     return insertRes;
   } catch (error) {
     console.log(error);
