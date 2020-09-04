@@ -11,7 +11,7 @@ export const CreateOrSearchClient = () => {
   const history = useHistory();
 
   const clientsAPI = api("clients");
-
+  //TODO use buttons for conditional
   return (
     <Fragment>
       <section className="px-4 py-4 has-text-centered mt-4 mb-4">
@@ -24,7 +24,6 @@ export const CreateOrSearchClient = () => {
           </button>
         </div>
       </section>
-
       <Formik
         initialValues={{
           firstName: "",
