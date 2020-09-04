@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+//TODO: get text to fit in buttons
+
 export const Options = ({ loginMode, forgotMode, handler }) => {
   return (
     <div>
       <button className="button mt-4 ml-2" onClick={handler}>
-        {loginMode ? "Create An Account?" : "Already Have An Account?"}
+        {loginMode ? "Create Account?" : "Have an Account?"}
       </button>
       <br></br>
       {loginMode && !forgotMode ? (
