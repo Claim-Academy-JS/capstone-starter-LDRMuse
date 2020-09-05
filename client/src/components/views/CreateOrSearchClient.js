@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import * as Yup from "yup";
 
@@ -9,6 +9,11 @@ import api from "api";
 
 export const CreateOrSearchClient = () => {
   const history = useHistory();
+  const {
+    state: {
+      newAdmin: { name },
+    },
+  } = useLocation();
 
   const clientsAPI = api("clients");
   //TODO use buttons for conditional
@@ -16,6 +21,7 @@ export const CreateOrSearchClient = () => {
     <Fragment>
       <section className="px-4 py-4 has-text-centered mt-4 mb-4">
         <div className="container">
+          <h1 className="title is-3">Hello, {name} !</h1>
           <button className="button is-primary mr-4" type="submit">
             Add Client
           </button>

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 import { Options } from "./Options";
 
@@ -11,6 +11,7 @@ import api from "api";
 
 export const Login = () => {
   const adminApi = api("admin");
+  const history = useHistory();
   const location = useLocation();
   const [loginMode, setLoginMode] = useState(location.search.includes("login"));
   const [forgotMode, setForgotMode] = useState(false);
@@ -26,6 +27,9 @@ export const Login = () => {
 
   return (
     <section className="mt-5 ml-5 mr-5 box has-text-centered">
+      <h2 className="has-text-centered title">
+        {loginMode ? "Login" : "Create Account"}{" "}
+      </h2>
       <Formik
         initialValues={{
           name: "",
@@ -42,11 +46,11 @@ export const Login = () => {
             .max(12)
             .required("password is required"),
         })}
-        onSubmit={(newAdmin, { setSubmitting }) => {
+        onSubmit={async (newAdmin, { setSubmitting }) => {
           try {
             adminApi.create(newAdmin);
             setSubmitting(false);
-            console.log(newAdmin, "aad,");
+            history.push("/clients/create", { newAdmin });
           } catch (err) {
             setSubmitting(false);
             console.log(err);
@@ -57,7 +61,6 @@ export const Login = () => {
           <Form className="has-text-centered mt-2">
             {!loginMode ? (
               <div className="field">
-                <h1 className="title">Get Started</h1>
                 <label htmlFor="name">Name</label>
                 <div className="control">
                   <Field className="mt-3" name="name" type="text" />
@@ -66,9 +69,7 @@ export const Login = () => {
                   </p>
                 </div>
               </div>
-            ) : (
-              <h1 className="title mt-4">Admin Login</h1>
-            )}
+            ) : null}
             <div className="field">
               <label htmlFor="email">Email</label>
               <div className="control">
