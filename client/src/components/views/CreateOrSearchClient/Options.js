@@ -5,15 +5,18 @@ import PropTypes from "prop-types";
 
 export const Options = ({ searchClientMode, handler }) => {
   return (
-    <div>
-      <button className="button mt-4 ml-2" onClick={handler}>
-        {searchClientMode ? "Add New Client" : "Search Client?"}
-      </button>
-      <button className="button mt-4 ml-2" onClick={handler}>
-        {!searchClientMode ? "Search Client?" : null}
-      </button>
-      <br></br>
-    </div>
+    <section className="px-4 py-4 has-text-centered mt-4 mb-4">
+      <div className="container">
+        <button className="button is-primary mr-2" onClick={handler}>
+          {searchClientMode ? "Add New Client?" : "Search Client?"}
+        </button>
+        {!searchClientMode ? (
+          <button className="button is-primary ml-2" onClick={handler}>
+            {searchClientMode ? "Search Client?" : "Add New Client?"}
+          </button>
+        ) : null}
+      </div>
+    </section>
   );
 };
 
