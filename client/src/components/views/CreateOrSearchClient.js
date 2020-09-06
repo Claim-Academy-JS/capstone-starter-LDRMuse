@@ -15,19 +15,24 @@ export const CreateOrSearchClient = () => {
     },
   } = useLocation();
 
-  const [searchClientMode, setSearchClientMode] = useState(
-    location.search.includes("search")
-  );
+  const [searchClientMode, setSearchClientMode] = useState(false);
 
   const clientsAPI = api("clients");
-  //TODO use buttons for conditional searchClients or create client
+  //TODO use buttons for conditional search existing client or create client
   //search clients will lead to chart entry page
+  // const handleClick = (event) => {
+  //   event.preventDefault();
+  //   if (searchClientMode) {
+  //     setSearchClientMode(true);
+  //   }
+  // };
+
   return (
     <Fragment>
       <section className="px-4 py-4 has-text-centered mt-4 mb-4">
         <div className="container">
           <h1 className="title is-3">Hello, {name} !</h1>
-          <button className="button is-primary mr-4" type="submit">
+          <button className="button is-primary mr-4" type="onClick">
             Add New Client
           </button>
           <button className="button is-primary" type="submit">
@@ -59,6 +64,9 @@ export const CreateOrSearchClient = () => {
           } catch (err) {
             setSubmitting(false);
             console.error(err);
+          }
+          if (searchClientMode) {
+            setSearchClientMode(true);
           }
         }}
       >
