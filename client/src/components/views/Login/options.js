@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import React from "react";
 
 export const Options = ({ status, handler }) => (
-  <div>
+  <div className="has-text-centered">
     <button
-      className="button mt-4 ml-2 is-primary"
+      className="button mt-4 ml-2 is-primary "
       onClick={handler}
       // 'toggle opposite' via 'handler'
       data-status={status === "Login" ? "Create Account" : "Login"}

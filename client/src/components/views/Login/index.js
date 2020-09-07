@@ -124,7 +124,7 @@ export const Login = () => {
         {({ isSubmitting }) => (
           <Form>
             {status !== "Login" && status !== "Reset Password" ? (
-              <div className="field">
+              <div className="field has-text-centered">
                 <label htmlFor="name" className="ml-2">
                   Name
                 </label>
@@ -137,7 +137,7 @@ export const Login = () => {
               </div>
             ) : null}
 
-            <div className="field">
+            <div className="field has-text-centered">
               <label htmlFor="email" className="ml-2">
                 Email
               </label>
@@ -148,7 +148,7 @@ export const Login = () => {
             </div>
 
             {status !== "Reset Password" ? (
-              <div className="field">
+              <div className="field has-text-centered">
                 <label htmlFor="password" className="ml-2">
                   Password
                 </label>
@@ -158,14 +158,15 @@ export const Login = () => {
                 </div>
               </div>
             ) : null}
-
-            <button
-              type="submit"
-              className="button is-success ml-2 mt-2"
-              disabled={isSubmitting}
-            >
-              {status}
-            </button>
+            <div className="has-text-centered">
+              <button
+                type="submit"
+                className="button is-success ml-2 mt-2"
+                disabled={isSubmitting}
+              >
+                {status}
+              </button>
+            </div>
           </Form>
         )}
       </Formik>
