@@ -18,6 +18,14 @@ export const deleteAdmin = async () => {
   }
 };
 
+export const getAdmin = async (uid) => {
+  try {
+    return await client.db('BrowAndArrow').collection('admins').findOne(uid);
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
 export const addClient = async (newClient) => {
   try {
     const insertRes = await client.db('BrowAndArrow').collection('clients').insertOne(newClient);

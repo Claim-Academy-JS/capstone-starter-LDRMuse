@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { addAdmin } from '../db';
+import { addAdmin, getAdmin } from '../db';
 
 const router = new Router();
 
@@ -8,17 +8,28 @@ router.get('/', (_, res) => {
   res.send('<h1>Hello from admins</h1>');
 });
 
-router.post('/create', async ({ body }, res) => {
+router.get('/:uid', async ({ params }, res) => {
   try {
-    const dbRes = await addAdmin(body);
-    res.status(201);
-    res.json(dbRes);
-  } catch (error) {
-    error.message = 'Database Error';
-    res.status(500).send(error);
+    const mongoRes = await getAdmin(params);
+    if (!mongoRes) {
+      throw new Error('User not found!');
+    }
+    res.status(200);
+    res.json(mongoRes);
+  } catch (err) {
+    res.status(500);
+    res.json(err);
   }
 });
 
-// TODO: Make a delete for deleteAdmin
-
+router.post('/create', async ({ body }, res) => {
+  try {
+    const mongoRes = await addAdmin(body);
+    res.status(201);
+    res.json(mongoRes);
+  } catch (err) {
+    res.status(500);
+    res.json(err);
+  }
+});
 export default router;
