@@ -1,6 +1,5 @@
 export {
   Home,
-  GetStarted,
   Login,
   CreateOrSearchClient,
   ClientChartEntry,
