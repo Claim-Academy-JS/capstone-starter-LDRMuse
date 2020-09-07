@@ -17,10 +17,13 @@ export default (route) => ({
     return res.json();
   },
 
-  show(id) {},
-
-  getAll() {
-    console.log("triyng to get all", route);
+  async show(id) {
+    try {
+      const res = await fetch(`${baseUrl}${route}/${id}`);
+      return await res.json();
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   async update(chart, email) {

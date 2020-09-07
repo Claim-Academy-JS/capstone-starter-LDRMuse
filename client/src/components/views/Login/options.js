@@ -1,29 +1,33 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
-//TODO: get text to fit in buttons
+export const Options = ({ status, handler }) => (
+  <div>
+    <button
+      className="button mt-4 ml-2 is-primary"
+      onClick={handler}
+      // 'toggle opposite' via 'handler'
+      data-status={status === "Login" ? "Create Account" : "Login"}
+    >
+      {status === "Login" ? "Create an Account?" : "Need to Login?"}
+    </button>
 
-export const Options = ({ loginMode, forgotMode, handler }) => {
-  return (
-    <div>
-      <button className="button mt-4 ml-2" onClick={handler}>
-        {loginMode ? "Create Account?" : "Have an Account?"}
+    {status === "Login" ? (
+      <button
+        className="button mt-4 ml-2 is-primary"
+        onClick={handler}
+        // Spell this out explicitly so we can just use it as is
+        data-status="Reset Password"
+      >
+        Forgot Password?
       </button>
-      <br></br>
-      {loginMode && !forgotMode ? (
-        <button className="button mt-4 ml-2" onClick={handler}>
-          {" "}
-          Forgot Password?{" "}
-        </button>
-      ) : null}
-    </div>
-  );
-};
+    ) : null}
+  </div>
+);
 
 Options.propTypes = {
-  loginMode: PropTypes.bool,
   handler: PropTypes.func,
-  forgotMode: PropTypes.bool,
+  status: PropTypes.string,
 };
 
-Options.defaultProps = { loginMode: false };
+Options.defaultProps = { status: "Login" };
