@@ -92,8 +92,11 @@ export const Login = () => {
                 })
                 .then((uid) => {
                   setSubmitting(false);
-                  // We have all of the info we need
-                  history.push(`/clients/${uid}`, { name });
+                  //TODO: Answer these questions
+                  // I know this is for the Admins own page
+                  //but in what order do I need my routes to be
+                  //able to got to the CreateOrSrarch clients page/component?
+                  history.push(`/clients/${uid}/create`, { name });
                 })
                 .catch((err) => {
                   setSubmitting(false);
