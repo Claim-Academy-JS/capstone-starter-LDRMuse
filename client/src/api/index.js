@@ -18,8 +18,6 @@ export default (route) => ({
   },
 
   async show(id) {
-    console.log(id);
-    console.log(`${baseUrl}/${route}/${id}`);
     try {
       const res = await fetch(`${baseUrl}/${route}/${id}`);
       return await res.json();
