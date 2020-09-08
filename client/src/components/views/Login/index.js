@@ -103,8 +103,8 @@ export const Login = () => {
                 .createUserWithEmailAndPassword(email, password)
                 .then(({ user: { uid } }) => adminAPI.create({ uid, name }))
                 .then(({ uid }) => {
+                  // TODO: Create a notification letting admin know they signed up
                   // Formik state to prevent double submissions - turn it off now (disables button)
-                  console.log("name ", name);
                   setSubmitting(false);
                   history.push(`/clients/${uid}`, { name });
                 })
