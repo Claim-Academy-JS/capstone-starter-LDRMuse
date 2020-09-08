@@ -110,7 +110,7 @@ export const Login = () => {
             default:
               auth
                 .createUserWithEmailAndPassword(email, password)
-                .then(({ admin: { uid } }) => {
+                .then(({ user: uid }) => {
                   adminAPI.create({ uid, name });
                 })
                 .then(() => {
