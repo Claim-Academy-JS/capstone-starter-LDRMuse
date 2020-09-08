@@ -29,22 +29,30 @@ export const Login = () => {
     setStatus(status);
   };
 
+  //TODO: look at possilbe menory leak
+
   useEffect(() => {
     if (status === "Loading...") {
       (async () => {
         // Destructure 'currentUser' from 'auth' (https://firebase.google.com/docs/auth/web/manage-users)
-        const { currentUser: admin } = auth;
-        if (admin) {
+
+        const { currentUser } = auth;
+        if (currentUser) {
           try {
-            const { uid } = admin;
-            history.push(`/clients/${uid}`);
+            const { uid } = currentUser;
+
+            // 'uid' is from 'auth' - we need the name from our mongo...
+            const { name } = await adminAPI.show(uid);
+            history.push(`/clients/${uid}`, { name });
           } catch (error) {
-            console.log(error);
+            console.error(error);
           }
         }
+        // We didn't find any exiting user - so show login form
         setStatus("Login");
       })();
     } else {
+      // If we are in 'create account' status, make sure to logout any current user first,
       auth.signOut();
     }
   });
