@@ -26,7 +26,7 @@ router.post('/create', async ({ body }, res) => {
   try {
     const mongoRes = await addAdmin(body);
     res.status(201);
-    res.json(mongoRes);
+    res.json({ uid: body.uid, mongoRes });
   } catch (err) {
     res.status(500);
     res.json(err);

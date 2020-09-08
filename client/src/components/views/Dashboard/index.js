@@ -14,7 +14,7 @@ import { ClientChartEntry } from "./ClientChartEntry";
 export const Dashboard = () => {
   const history = useHistory();
   const { state } = useLocation();
-
+  console.log("state locaiton", state.name);
   const [searchClientMode, setSearchClientMode] = useState(false);
   const [addClientMode, setAddClientMode] = useState(false);
 
