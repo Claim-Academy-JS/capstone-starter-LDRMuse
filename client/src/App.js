@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Redirect,
+  Router,
+  Route,
+  Switch,
+} from "react-router-dom";
 
 import {
   CreateOrSearchClient,
@@ -25,7 +30,18 @@ export const App = () => (
         <Login />
       </Route>
 
-      <Route exact path="/clients/create">
+      <Route exact path="/create-account">
+        <Redirect
+          to={{ pathname: "/login", state: { status: "Create Account" } }}
+        />
+      </Route>
+
+      <Route exact path="/clients/:uid">
+        <Header />
+        <CreateOrSearchClient />
+      </Route>
+
+      <Route exact path="/clients/create/:uid">
         <Header />
         <CreateOrSearchClient />
       </Route>
