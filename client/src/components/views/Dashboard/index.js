@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 
 import api from "api";
+import auth from "auth";
 
 import { Options } from "./Options";
 import { ClientChartEntry } from "./ClientChartEntry";
@@ -28,6 +29,10 @@ export const Dashboard = () => {
     } else if (event.target.textContent.includes("Add")) {
       setAddClientMode((prev) => !prev);
     }
+  };
+
+  const handleSignOut = () => {
+    auth.signOut().then(history.push("/login"));
   };
 
   return (
@@ -139,7 +144,7 @@ export const Dashboard = () => {
           </Form>
         )}
       </Formik>
-      <ClientChartEntry />
+      <ClientChartEntry handler={handleSignOut} />
     </Fragment>
   );
 };
