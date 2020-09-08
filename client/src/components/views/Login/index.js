@@ -134,8 +134,8 @@ export const Login = () => {
                 <label htmlFor="name" className="ml-2">
                   Name
                 </label>
-                <div className="control mx-2 my-1">
-                  <Field name="name" type="text" className="w-100" />
+                <div className="control mx-2 my-2">
+                  <Field name="name" type="text" className="mt-2 w-100" />
                   <p className="help is-danger">
                     <ErrorMessage name="name" />
                   </p>
@@ -147,8 +147,8 @@ export const Login = () => {
               <label htmlFor="email" className="ml-2">
                 Email
               </label>
-              <div className="control mx-2 my-1">
-                <Field name="email" type="email" className="w-100" />
+              <div className="control">
+                <Field name="email" type="email" className="mt-2 w-100" />
                 <ErrorMessage name="email" />
               </div>
             </div>
@@ -159,7 +159,11 @@ export const Login = () => {
                   Password
                 </label>
                 <div className="control mx-2 my-1">
-                  <Field name="password" type="password" className="w-100" />
+                  <Field
+                    name="password"
+                    type="password"
+                    className="mt-2 w-100"
+                  />
                   <ErrorMessage name="password" />
                 </div>
               </div>
