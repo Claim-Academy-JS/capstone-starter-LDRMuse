@@ -8,6 +8,8 @@ import {
 
 import { Dashboard, Four04, Footer, Header, Home, Login } from "./components";
 
+import { ClientChartEntry } from "components/base";
+
 import "./App.scss";
 
 export const App = () => (
@@ -33,9 +35,9 @@ export const App = () => (
         <Dashboard />
       </Route>
 
-      <Route exact path="/clients/create/:uid">
+      <Route exact path="/client/:id">
         <Header />
-        <Dashboard />
+        <ClientChartEntry />
       </Route>
 
       <Route>

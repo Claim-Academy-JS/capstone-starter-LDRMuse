@@ -17,7 +17,8 @@ export const ClientChartEntry = () => {
       <section className="px-4 py-4 mt-4">
         <div className="container">
           <h2 className="title is-5">
-            Chart Entry for {state?.firstName} {state?.lastName}
+            Chart Entry for {state.newClient.firstName}{" "}
+            {state.newClient.lastName}
           </h2>
         </div>
       </section>

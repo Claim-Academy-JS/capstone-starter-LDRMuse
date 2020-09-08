@@ -9,7 +9,6 @@ import api from "api";
 import auth from "auth";
 
 import { Options } from "./Options";
-import { ClientChartEntry } from "./ClientChartEntry";
 
 export const Dashboard = () => {
   const history = useHistory();
@@ -55,9 +54,12 @@ export const Dashboard = () => {
         })}
         onSubmit={async (newClient, { setSubmitting }) => {
           try {
-            clientsAPI.create({ ...newClient, charts: [] });
+            const { insertedId } = await clientsAPI.create({
+              ...newClient,
+              charts: [],
+            });
             setSubmitting(false);
-            history.push("/clients/chart-entry", { newClient });
+            history.push(`/client/${insertedId}`, { newClient });
           } catch (err) {
             setSubmitting(false);
             console.error(err);
