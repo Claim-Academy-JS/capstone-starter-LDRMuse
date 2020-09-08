@@ -15,6 +15,7 @@ router.get('/:uid', async ({ params }, res) => {
       throw new Error('User not found!');
     }
     res.status(200);
+    console.log('mongores', mongoRes);
     res.json(mongoRes);
   } catch (err) {
     res.status(500);

@@ -88,19 +88,10 @@ export const Login = () => {
             case "Login":
               auth
                 .signInWithEmailAndPassword(email, password)
-                .then(({ admin: { uid } }) => {
-                  // Got the user - need the name from the database.
-                  // TODO: 😖 Server gets hit 2-3 times for the same request!
-                  adminAPI.show(uid);
-                  return uid;
-                })
-                .then((uid) => {
+                .then(({ user: { uid } }) => adminAPI.show(uid))
+                .then(({ uid, name }) => {
                   setSubmitting(false);
-                  //TODO: Answer these questions
-                  // I know this is for the Admins own page
-                  //but in what order do I need my routes to be
-                  //able to got to the Dashboard clients page/component?
-                  history.push(`/clients/${uid}/create`, { name });
+                  history.push(`/clients/${uid}`, { name });
                 })
                 .catch((err) => {
                   setSubmitting(false);
@@ -110,7 +101,7 @@ export const Login = () => {
             default:
               auth
                 .createUserWithEmailAndPassword(email, password)
-                .then(({ user: uid }) => adminAPI.create({ uid, name }))
+                .then(({ user: { uid } }) => adminAPI.create({ uid, name }))
                 .then(({ uid }) => {
                   // Formik state to prevent double submissions - turn it off now (disables button)
                   console.log("name ", name);

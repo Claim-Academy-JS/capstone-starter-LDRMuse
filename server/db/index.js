@@ -1,6 +1,7 @@
 import client from './client';
 
 export const addAdmin = async (newAdmin) => {
+  console.log('adding', newAdmin);
   try {
     const insertRes = await client.db('BrowAndArrow').collection('admins').insertOne(newAdmin);
     return insertRes;
@@ -19,6 +20,7 @@ export const deleteAdmin = async () => {
 };
 
 export const getAdmin = async (uid) => {
+  console.log('loiikign for', uid);
   try {
     return await client.db('BrowAndArrow').collection('admins').findOne(uid);
   } catch (err) {
