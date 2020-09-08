@@ -8,8 +8,9 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import api from "api";
 
 import { Options } from "./Options";
+import { ClientChartEntry } from "./ClientChartEntry";
 
-export const CreateOrSearchClient = () => {
+export const Dashboard = () => {
   const history = useHistory();
   const {
     state: {

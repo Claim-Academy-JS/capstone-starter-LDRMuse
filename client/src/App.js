@@ -1,20 +1,12 @@
 import React from "react";
 import {
-  BrowserRouter as Redirect,
-  Router,
+  BrowserRouter as Router,
+  Redirect,
   Route,
   Switch,
 } from "react-router-dom";
 
-import {
-  CreateOrSearchClient,
-  ClientChartEntry,
-  Four04,
-  Footer,
-  Header,
-  Home,
-  Login,
-} from "./components";
+import { Dashboard, Four04, Footer, Header, Home, Login } from "./components";
 
 import "./App.scss";
 
@@ -36,15 +28,14 @@ export const App = () => (
         />
       </Route>
 
-      <Route exact path="/clients/create/:uid">
+      <Route exact path="/clients/:uid">
         <Header />
-        <CreateOrSearchClient />
+        <Dashboard />
       </Route>
 
-      <Route exact path="/clients/chart-entry">
-        {/* TODO{melissa.heying}: ⚠️Only if user is logged in! */}
+      <Route exact path="/clients/create/:uid">
         <Header />
-        <ClientChartEntry />
+        <Dashboard />
       </Route>
 
       <Route>

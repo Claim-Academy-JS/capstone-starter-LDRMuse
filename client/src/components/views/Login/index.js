@@ -14,8 +14,11 @@ export const Login = () => {
   const adminAPI = api("admin");
 
   const history = useHistory();
+
+  // This will only show something from: 'state: { status: "Create Account" }'
   const { state } = useLocation();
 
+  // If we came from '/login,' there is no 'state'...
   const [status, setStatus] = useState(state?.status || "Loading...");
 
   const handleStatus = ({
@@ -28,18 +31,19 @@ export const Login = () => {
 
   useEffect(() => {
     if (status === "Loading...") {
-      auth.onAuthStateChanged(async (admin) => {
+      (async () => {
+        // Destructure 'currentUser' from 'auth' (https://firebase.google.com/docs/auth/web/manage-users)
+        const { currentUser: admin } = auth;
         if (admin) {
           try {
             const { uid } = admin;
-            const { newAdmin } = await adminAPI.show(uid);
-            history.push(`/clients/${uid}`, { newAdmin });
+            history.push(`/clients/${uid}`);
           } catch (error) {
             console.log(error);
           }
         }
         setStatus("Login");
-      });
+      })();
     } else {
       auth.signOut();
     }
@@ -95,7 +99,7 @@ export const Login = () => {
                   //TODO: Answer these questions
                   // I know this is for the Admins own page
                   //but in what order do I need my routes to be
-                  //able to got to the CreateOrSrarch clients page/component?
+                  //able to got to the Dashboard clients page/component?
                   history.push(`/clients/${uid}/create`, { name });
                 })
                 .catch((err) => {
