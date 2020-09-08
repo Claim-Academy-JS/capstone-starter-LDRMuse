@@ -14,20 +14,13 @@ import { ClientChartEntry } from "./ClientChartEntry";
 export const Dashboard = () => {
   const history = useHistory();
   const { state } = useLocation();
-  const [searchClientMode, setSearchClientMode] = useState(false);
-  const [addClientMode, setAddClientMode] = useState(false);
+
+  const [status, setStatus] = useState("Add Client");
 
   const clientsAPI = api("clients");
-  //TODO use buttons for conditional search existing client or create client
-  // search clients will lead to chart entry page to add to exisiting client
 
-  const handleClick = (event) => {
-    event.preventDefault();
-    if (event.target.textContent.includes("Search")) {
-      setSearchClientMode((prev) => !prev);
-    } else if (event.target.textContent.includes("Add")) {
-      setAddClientMode((prev) => !prev);
-    }
+  const handleToggle = ({ target: { textContent } }) => {
+    setStatus(textContent);
   };
 
   const handleSignOut = () => {
@@ -41,11 +34,7 @@ export const Dashboard = () => {
           <h1 className="title is-3">Hello, {state?.name} !</h1>
         </div>
       </section>
-      <Options
-        handler={handleClick}
-        searchClientMode={searchClientMode}
-        addClientMode={addClientMode}
-      />
+      <Options handler={handleToggle} status={status} />
       <Formik
         initialValues={{
           firstName: "",
@@ -74,20 +63,7 @@ export const Dashboard = () => {
       >
         {({ isSubmitting }) => (
           <Form className="box ml-2 has-text-centered">
-            {searchClientMode ? (
-              <div>
-                <h1>Search Clients</h1>
-                <button
-                  className="button is-primary mr-4"
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  Submit
-                </button>
-              </div>
-            ) : null}
-
-            {addClientMode ? (
+            {status === "Add Client" ? (
               <div className="field">
                 <label htmlFor="name">Client Name</label>
                 <div className="control">
@@ -139,7 +115,18 @@ export const Dashboard = () => {
                   Submit
                 </button>
               </div>
-            ) : null}
+            ) : (
+              <div>
+                <h1>Search Clients</h1>
+                <button
+                  className="button is-primary mr-4"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  Submit
+                </button>
+              </div>
+            )}
           </Form>
         )}
       </Formik>
