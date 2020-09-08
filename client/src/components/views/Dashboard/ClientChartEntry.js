@@ -8,12 +8,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import api from "api";
 
 export const ClientChartEntry = () => {
-  // Destructure values passed in via 'useHistory'
-  const {
-    state: {
-      newClient: { firstName, lastName, email },
-    },
-  } = useLocation();
+  const { state } = useLocation();
 
   const clientChartAPI = api("clients");
 
@@ -22,7 +17,7 @@ export const ClientChartEntry = () => {
       <section className="px-4 py-4 mt-4">
         <div className="container">
           <h2 className="title is-5">
-            Chart Entry for {firstName} {lastName}
+            Chart Entry for {state?.firstName} {state?.lastName}
           </h2>
         </div>
       </section>
@@ -50,7 +45,7 @@ export const ClientChartEntry = () => {
         // })}
         onSubmit={async (chartValues, { setSubmitting }) => {
           try {
-            clientChartAPI.update(chartValues, email);
+            clientChartAPI.update(chartValues, state?.email);
           } catch (err) {
             console.error(err);
           }

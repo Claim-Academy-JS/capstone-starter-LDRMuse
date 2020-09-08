@@ -12,11 +12,7 @@ import { ClientChartEntry } from "./ClientChartEntry";
 
 export const Dashboard = () => {
   const history = useHistory();
-  const {
-    state: {
-      newAdmin: { name },
-    },
-  } = useLocation();
+  const { state } = useLocation();
 
   const [searchClientMode, setSearchClientMode] = useState(false);
   const [addClientMode, setAddClientMode] = useState(false);
@@ -38,7 +34,7 @@ export const Dashboard = () => {
     <Fragment>
       <section className="px-4 py-4 has-text-centered mt-4 mb-4">
         <div className="container">
-          <h1 className="title is-3">Hello, {name} !</h1>
+          <h1 className="title is-3">Hello, {state?.name} !</h1>
         </div>
       </section>
       <Options
@@ -143,6 +139,7 @@ export const Dashboard = () => {
           </Form>
         )}
       </Formik>
+      <ClientChartEntry />
     </Fragment>
   );
 };
