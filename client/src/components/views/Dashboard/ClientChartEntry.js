@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
 import { useLocation } from "react-router-dom";
-import PropTypes from "prop-types";
+
 import * as Yup from "yup";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
 
 import api from "api";
 
-export const ClientChartEntry = ({ handler }) => {
+export const ClientChartEntry = () => {
   const { state } = useLocation();
 
   const clientChartAPI = api("clients");
@@ -19,9 +19,6 @@ export const ClientChartEntry = ({ handler }) => {
           <h2 className="title is-5">
             Chart Entry for {state?.firstName} {state?.lastName}
           </h2>
-          <button className="button is-text" onClick={handler}>
-            Not {state?.firstName}?
-          </button>
         </div>
       </section>
 
@@ -141,8 +138,4 @@ export const ClientChartEntry = ({ handler }) => {
       </Formik>
     </Fragment>
   );
-};
-
-ClientChartEntry.propTypes = {
-  handler: PropTypes.func,
 };

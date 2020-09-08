@@ -32,6 +32,9 @@ export const Dashboard = () => {
       <section className="px-4 py-4 has-text-centered mt-4 mb-4">
         <div className="container">
           <h1 className="title is-3">Hello, {state?.name} !</h1>
+          <button className="button is-text" onClick={handleSignOut}>
+            Not {state?.name}?
+          </button>
         </div>
       </section>
       <Options handler={handleToggle} status={status} />
@@ -130,7 +133,7 @@ export const Dashboard = () => {
           </Form>
         )}
       </Formik>
-      <ClientChartEntry handler={handleSignOut} />
+      {/* <ClientChartEntry handler={handleSignOut} /> */}
     </Fragment>
   );
 };
