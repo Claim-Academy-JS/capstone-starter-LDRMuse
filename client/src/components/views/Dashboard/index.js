@@ -9,6 +9,7 @@ import api from "api";
 import auth from "auth";
 
 import { Options } from "./Options";
+import { SearchClients } from "./SearchClients";
 
 export const Dashboard = () => {
   const history = useHistory();
@@ -129,14 +130,7 @@ export const Dashboard = () => {
               </div>
             ) : (
               <div>
-                <h1>Search Clients</h1>
-                <button
-                  className="button is-primary mr-4"
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  Submit
-                </button>
+                <SearchClients />
               </div>
             )}
           </Form>
