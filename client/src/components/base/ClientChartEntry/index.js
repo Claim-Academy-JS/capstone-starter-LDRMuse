@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import * as Yup from "yup";
@@ -14,6 +14,8 @@ const clientChartAPI = routes("clients");
 
 export const ClientChartEntry = () => {
   const { state } = useLocation();
+
+  const [fotoURL, setFotoUrl] = useState("");
 
   const handlePhoto = async (event) => {
     event.preventDefault();
@@ -63,7 +65,14 @@ export const ClientChartEntry = () => {
         // })}
         onSubmit={async (chartValues, { setSubmitting }) => {
           try {
-            clientChartAPI.update(chartValues, state?.newClient.email);
+            // {...chartValues, ....{photo: secure_url}}
+            const { status, message } = await clientChartAPI.update(
+              chartValues,
+              state?.newClient.email
+            );
+            if (status > 400) {
+              throw new Error(message || "Unable to add to chart");
+            }
           } catch (err) {
             console.error(err);
           }
