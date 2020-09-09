@@ -7,12 +7,12 @@ import { useLocation, useHistory } from "react-router-dom";
 
 import { Options } from "./Options";
 
-import api from "api/routes";
+import routes from "api/routes";
 import auth from "auth";
 
-export const Login = () => {
-  const adminAPI = api("admin");
+const adminAPI = routes("admin");
 
+export const Login = () => {
   const history = useHistory();
 
   // This will only show something from: 'state: { status: "Create Account" }'
@@ -115,9 +115,10 @@ export const Login = () => {
                 .createUserWithEmailAndPassword(email, password)
                 // destructure the object 'uid' from the user; then create key value paris for 'uid' and 'name'
                 .then(({ user: { uid } }) => adminAPI.create({ uid, name }))
-                .then(({ uid }) => {
-                  // TODO: Create a notification letting admin know they signed up
-
+                .then(({ status, uid }) => {
+                  if (status > 400) {
+                    throw new Error(status);
+                  }
                   // Formik state to prevent double submissions - turn it off now (disables button)
                   setSubmitting(false);
                   history.push(`/clients/${uid}`, { name });
@@ -129,6 +130,11 @@ export const Login = () => {
                   Unable to create a user ATM! 😞🙇🏽‍♂️
                   Please check your internet connection and/or try again later! 🤞🏽
                 `);
+                  auth.currentUser.delete().then(() => {
+                    console.info(
+                      "Removing any newly created auth user to preserve data integrity!"
+                    );
+                  });
                 });
           }
         }}
