@@ -115,9 +115,11 @@ export const Login = () => {
                 .createUserWithEmailAndPassword(email, password)
                 // destructure the object 'uid' from the user; then create key value paris for 'uid' and 'name'
                 .then(({ user: { uid } }) => adminAPI.create({ uid, name }))
-                .then(({ status, uid }) => {
+                .then(({ message, status, uid }) => {
                   if (status > 400) {
-                    throw new Error(status);
+                    throw new Error(
+                      message || "Unable to create user at this time"
+                    );
                   }
                   // Formik state to prevent double submissions - turn it off now (disables button)
                   setSubmitting(false);
