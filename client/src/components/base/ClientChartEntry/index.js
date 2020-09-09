@@ -28,7 +28,7 @@ export const ClientChartEntry = () => {
     const res = await cloudinary.upload(fd);
 
     const { secure_url } = await res.json();
-    console.log(secure_url);
+    setFotoUrl(secure_url);
   };
 
   return (
@@ -65,9 +65,9 @@ export const ClientChartEntry = () => {
         // })}
         onSubmit={async (chartValues, { setSubmitting }) => {
           try {
-            // {...chartValues, ....{photo: secure_url}}
+            const chartValuesWithFoto = { ...chartValues, ...{ fotoURL } };
             const { status, message } = await clientChartAPI.update(
-              chartValues,
+              { chartValues: chartValuesWithFoto },
               state?.newClient.email
             );
             if (status > 400) {
