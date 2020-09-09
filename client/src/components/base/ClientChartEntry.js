@@ -124,9 +124,14 @@ export const ClientChartEntry = () => {
           </div>
 
           <div className="field">
-            <label htmlFor="additionalNotes">Additional Notes</label>
+            <label htmlFor="additionalNotes"> </label>
             <div className="control">
-              <Field className="mt-3" name="additionalNotes" type="text" />
+              <Field
+                className="mt-3 textarea"
+                name="additionalNotes"
+                type="text"
+                placeholder="Additional Notes"
+              />
               <p className="help is-danger">
                 <ErrorMessage name="additionalNotes" />
               </p>
