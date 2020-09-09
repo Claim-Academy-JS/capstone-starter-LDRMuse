@@ -7,7 +7,7 @@ import { useLocation, useHistory } from "react-router-dom";
 
 import { Options } from "./Options";
 
-import api from "api";
+import api from "api/routes";
 import auth from "auth";
 
 export const Login = () => {

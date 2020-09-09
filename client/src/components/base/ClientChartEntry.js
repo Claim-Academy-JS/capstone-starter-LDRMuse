@@ -5,7 +5,7 @@ import * as Yup from "yup";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
 
-import api from "api";
+import api from "api/routes";
 
 export const ClientChartEntry = () => {
   const { state } = useLocation();

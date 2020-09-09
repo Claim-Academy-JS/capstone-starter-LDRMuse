@@ -5,7 +5,8 @@ import * as Yup from "yup";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
 
-import api from "api";
+import routes from "api/routes";
+import cloudinary from "api/cloudinary";
 import auth from "auth";
 
 import { Options } from "./Options";
@@ -28,6 +29,20 @@ export const Dashboard = () => {
   const handleSignOut = () => {
     auth.signOut().then(history.push("/login"));
   };
+
+  const handlePhoto = async (event) => {
+    event.preventDefault()
+    const { target } = event
+
+    const fd = new FormData()
+    fd.append("file", target.elements[1].files[0])
+    fd.append("upload_preset", 'brow-and-arrow')
+
+    const res = await cloudinary.upload(fd)
+
+    const { secure_url } = await res.json()
+    console.log(secure_url)
+
 
   return (
     <Fragment>
