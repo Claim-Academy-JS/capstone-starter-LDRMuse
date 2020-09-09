@@ -8,17 +8,19 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import routes from "api/routes";
 import cloudinary from "api/cloudinary";
 
+import { UploadPhoto } from "./UploadPhoto";
+
+const clientChartAPI = routes("clients");
+
 export const ClientChartEntry = () => {
   const { state } = useLocation();
-
-  const clientChartAPI = routes("clients");
 
   const handlePhoto = async (event) => {
     event.preventDefault();
     const { target } = event;
 
     const fd = new FormData();
-    fd.append("file", target.elements[1].files[0]);
+    fd.append("file", target.elements[0].files[0]);
     fd.append("upload_preset", "brow-and-arrow");
 
     const res = await cloudinary.upload(fd);
@@ -32,31 +34,12 @@ export const ClientChartEntry = () => {
       <section className="px-4 py-4 mt-4">
         <div className="container">
           <h2 className="title is-5">
-            Chart Entry for {state.newClient.firstName}{" "}
-            {state.newClient.lastName}
+            Chart Entry for {state?.newClient.firstName}{" "}
+            {state?.newClient.lastName}
           </h2>
         </div>
       </section>
-
-      <section className="box">
-        <div className="field">
-          <div className="file is-primary">
-            <label className="file-label">
-              <input className="file-input" type="file" />
-              <span className="file-cta">
-                <span className="file-label">Upload photo/doc</span>
-              </span>
-              <button
-                onClick={handlePhoto}
-                className="button is-success level-item"
-              >
-                Add It!
-              </button>
-            </label>
-          </div>
-        </div>
-      </section>
-
+      <UploadPhoto handler={handlePhoto} />
       <Formik
         initialValues={{
           dateOfService: "",
