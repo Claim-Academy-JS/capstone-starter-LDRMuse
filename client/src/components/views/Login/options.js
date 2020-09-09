@@ -12,6 +12,7 @@ export const Options = ({ status, handler }) => (
       {status === "Login" ? "Create an Account?" : "Need to Login?"}
     </button>
 
+    {/* if status is "Login", show button for status "Forgot Password" */}
     {status === "Login" ? (
       <button
         className="button mt-4 ml-2 is-primary"

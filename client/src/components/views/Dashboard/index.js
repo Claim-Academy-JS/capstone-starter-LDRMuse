@@ -14,12 +14,14 @@ export const Dashboard = () => {
   const history = useHistory();
   const { state } = useLocation();
 
-  const [status, setStatus] = useState("Add Client");
+  // 2 modes "Add Client" or "Search Client". Default is "Add Client"
+  const [mode, setMode] = useState("Add Client");
 
   const clientsAPI = api("clients");
 
+  // takes targeted button's Text Content ex. "Add Client" or "Search Client"
   const handleToggle = ({ target: { textContent } }) => {
-    setStatus(textContent);
+    setMode(textContent);
   };
 
   const handleSignOut = () => {
@@ -36,7 +38,8 @@ export const Dashboard = () => {
           </button>
         </div>
       </section>
-      <Options handler={handleToggle} status={status} />
+      <Options handler={handleToggle} mode={mode} />
+      {/* Default shows form. If "Search Clients is clicked, form hides" */}
       <Formik
         initialValues={{
           firstName: "",
@@ -54,11 +57,15 @@ export const Dashboard = () => {
         })}
         onSubmit={async (newClient, { setSubmitting }) => {
           try {
+            // take newClient object and spread,
+            // destructure insertedId and insert into newClient object
+            // create empty array for chart notes to go into
             const { insertedId } = await clientsAPI.create({
               ...newClient,
               charts: [],
             });
             setSubmitting(false);
+            // take newClient to route (using insertedId); Display is ClientChartEntry component
             history.push(`/client/${insertedId}`, { newClient });
           } catch (err) {
             setSubmitting(false);
@@ -68,7 +75,7 @@ export const Dashboard = () => {
       >
         {({ isSubmitting }) => (
           <Form className="box ml-2 has-text-centered">
-            {status === "Add Client" ? (
+            {mode === "Add Client" ? (
               <div className="field">
                 <label htmlFor="name">Client Name</label>
                 <div className="control">
@@ -135,7 +142,6 @@ export const Dashboard = () => {
           </Form>
         )}
       </Formik>
-      {/* <ClientChartEntry handler={handleSignOut} /> */}
     </Fragment>
   );
 };

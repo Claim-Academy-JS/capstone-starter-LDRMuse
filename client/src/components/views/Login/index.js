@@ -21,6 +21,7 @@ export const Login = () => {
   // If we came from '/login,' there is no 'state'...
   const [status, setStatus] = useState(state?.status || "Loading...");
 
+  //takes the targeted click and sets the status
   const handleStatus = ({
     target: {
       dataset: { status },
@@ -29,7 +30,7 @@ export const Login = () => {
     setStatus(status);
   };
 
-  //TODO: look at possilbe menory leak
+  //TODO: look at possible memory leak
 
   useEffect(() => {
     if (status === "Loading...") {
@@ -41,14 +42,14 @@ export const Login = () => {
           try {
             const { uid } = currentUser;
 
-            // 'uid' is from 'auth' - we need the name from our mongo...
-            const { name } = await adminAPI.show(uid);
+            // 'uid' is from 'auth' - we need the { name } from our mongo...
+            const { name } = await adminAPI.show(uid); // this is a function pulling from mongo
             history.push(`/clients/${uid}`, { name });
           } catch (error) {
             console.error(error);
           }
         }
-        // We didn't find any exiting user - so show login form
+        // We didn't find any exiting user - so show login form (go back to login form)
         setStatus("Login");
       })();
     } else {
@@ -81,6 +82,7 @@ export const Login = () => {
             status !== "Reset Password" &&
             Yup.string().min(6).required("Password is required!"),
         })}
+        // These status's are for the the buttons
         onSubmit={({ name, email, password }, { setSubmitting }) => {
           switch (status) {
             case "Reset Password":
@@ -96,9 +98,11 @@ export const Login = () => {
             case "Login":
               auth
                 .signInWithEmailAndPassword(email, password)
+                // goes to the object and pulls 'uid' from the user to show()
                 .then(({ user: { uid } }) => adminAPI.show(uid))
                 .then(({ uid, name }) => {
                   setSubmitting(false);
+                  // sends admin(user) to the Dashboard
                   history.push(`/clients/${uid}`, { name });
                 })
                 .catch((err) => {
@@ -109,9 +113,11 @@ export const Login = () => {
             default:
               auth
                 .createUserWithEmailAndPassword(email, password)
+                // destructure the object 'uid' from the user; then create key value paris for 'uid' and 'name'
                 .then(({ user: { uid } }) => adminAPI.create({ uid, name }))
                 .then(({ uid }) => {
                   // TODO: Create a notification letting admin know they signed up
+
                   // Formik state to prevent double submissions - turn it off now (disables button)
                   setSubmitting(false);
                   history.push(`/clients/${uid}`, { name });
@@ -129,6 +135,7 @@ export const Login = () => {
       >
         {({ isSubmitting }) => (
           <Form>
+            {/* if you are not logging in and not resetting password status is "Create Account" */}
             {status !== "Login" && status !== "Reset Password" ? (
               <div className="field has-text-centered">
                 <label htmlFor="name" className="ml-2">
@@ -142,7 +149,7 @@ export const Login = () => {
                 </div>
               </div>
             ) : null}
-
+            {/* If status is not "Create Account", status is "Login", then status is "Loading..." */}
             <div className="field has-text-centered">
               <label htmlFor="email" className="ml-2">
                 Email
