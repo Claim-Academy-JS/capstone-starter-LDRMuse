@@ -5,12 +5,27 @@ import * as Yup from "yup";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
 
-import api from "api/routes";
+import routes from "api/routes";
+import cloudinary from "api/cloudinary";
 
 export const ClientChartEntry = () => {
   const { state } = useLocation();
 
-  const clientChartAPI = api("clients");
+  const clientChartAPI = routes("clients");
+
+  const handlePhoto = async (event) => {
+    event.preventDefault();
+    const { target } = event;
+
+    const fd = new FormData();
+    fd.append("file", target.elements[1].files[0]);
+    fd.append("upload_preset", "brow-and-arrow");
+
+    const res = await cloudinary.upload(fd);
+
+    const { secure_url } = await res.json();
+    console.log(secure_url);
+  };
 
   return (
     <Fragment>
@@ -20,6 +35,25 @@ export const ClientChartEntry = () => {
             Chart Entry for {state.newClient.firstName}{" "}
             {state.newClient.lastName}
           </h2>
+        </div>
+      </section>
+
+      <section className="box">
+        <div className="field">
+          <div className="file is-primary">
+            <label className="file-label">
+              <input className="file-input" type="file" />
+              <span className="file-cta">
+                <span className="file-label">Upload photo/doc</span>
+              </span>
+              <button
+                onClick={handlePhoto}
+                className="button is-success level-item"
+              >
+                Add It!
+              </button>
+            </label>
+          </div>
         </div>
       </section>
 
@@ -52,7 +86,7 @@ export const ClientChartEntry = () => {
           }
         }}
       >
-        <Form className="box ml-2">
+        <Form className="box has-text-centered ml-2">
           <div className="field">
             <label htmlFor="dateOfService">Date of Service</label>
             <div className="control">
