@@ -63,7 +63,7 @@ export const ClientChartEntry = () => {
         // })}
         onSubmit={async (chartValues, { setSubmitting }) => {
           try {
-            clientChartAPI.update(chartValues, state?.email);
+            clientChartAPI.update(chartValues, state?.newClient.email);
           } catch (err) {
             console.error(err);
           }
