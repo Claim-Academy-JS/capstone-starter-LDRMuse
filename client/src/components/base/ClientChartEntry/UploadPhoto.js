@@ -11,7 +11,9 @@ export const UploadPhoto = ({ handler }) => {
             <span className="file-cta">
               <span className="file-label">Upload photo/doc</span>
             </span>
-            <button className="button is-success level-item">Add It!</button>
+            <button className="ml-4 button is-success level-item">
+              Add It!
+            </button>
           </label>
         </div>
       </div>
