@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, Link } from "react-router-dom";
 import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import routes from "api/routes";
@@ -164,8 +164,11 @@ export const ClientChartEntry = () => {
               </p>
             </div>
           </div>
-          <button className="button is-primary mr-4" type="submit">
+          <button className="button is-primary" type="submit">
             Add Chart Entry
+          </button>
+          <button className="button is-success ml-4" type="submit">
+            Go Back
           </button>
         </Form>
       </Formik>
