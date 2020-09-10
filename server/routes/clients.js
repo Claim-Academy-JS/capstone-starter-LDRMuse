@@ -1,11 +1,17 @@
 import { Router } from 'express';
 
-import { addClient, addChartEntry } from '../db';
+import { addClient, addChartEntry, showAllClients } from '../db';
 
 const router = new Router();
 
-router.get('/', (_, res) => {
-  res.send('<h1>Hello from clients</h1>');
+router.get('/', async (_, res) => {
+  try {
+    const dbRes = await showAllClients();
+    res.status(200);
+    res.json(dbRes);
+  } catch (error) {
+    error.message = 'Database Error';
+  }
 });
 
 router.post('/create', async ({ body }, res) => {
@@ -20,7 +26,6 @@ router.post('/create', async ({ body }, res) => {
 });
 
 router.patch('/chart-entry', async ({ body: { chart, email } }, res) => {
-  console.log(chart, email);
   try {
     const dbRes = await addChartEntry(chart, email);
     res.status(201);
