@@ -72,6 +72,7 @@ export const Dashboard = () => {
             .required("Email is required"),
           phone: Yup.string().required("Phone is required"),
         })}
+        // Add a new client
         onSubmit={async (newClient, { setSubmitting }) => {
           try {
             // take newClient object and spread,
@@ -83,7 +84,7 @@ export const Dashboard = () => {
             });
             setSubmitting(false);
             // take newClient to route (using insertedId); Display is ClientChartEntry component
-            history.push(`/client/${insertedId}`, { newClient });
+            history.push(`/client/${insertedId}`, { currentClient: newClient });
           } catch (err) {
             setSubmitting(false);
             console.error(err);
