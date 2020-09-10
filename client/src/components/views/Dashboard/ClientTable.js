@@ -13,6 +13,7 @@ export const ClientTable = ({ clients }) => {
                 <td>{client.firstName}</td>
                 <td>{client.lastName}</td>
                 <td>{client.email}</td>
+                <td>{client.phone}</td>
               </tr>
             ))}
           </tbody>
