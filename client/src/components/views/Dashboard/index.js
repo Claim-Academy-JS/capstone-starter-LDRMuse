@@ -91,7 +91,7 @@ export const Dashboard = () => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form className="box ml-2 has-text-centered">
+          <Form className="container box has-text-centered">
             <div className="field is-grouped is-grouped-centered">
               <label htmlFor="name" className="is-sr-only">
                 First Name

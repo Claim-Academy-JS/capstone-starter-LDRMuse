@@ -4,12 +4,18 @@ import PropTypes from "prop-types";
 export const ClientTable = ({ clients }) => {
   return (
     <Fragment>
-      <div className="has-text-centered">
-        <table className="table my-center">
+      <div className="container box">
+        <h1 className="title is-4 has-text-centered">Current Clients</h1>
+        <table className="table container has-text-centered">
           <tbody>
-            <td></td>
+            {clients.map((client) => (
+              <tr key={client._id}>
+                <td>{client.firstName}</td>
+                <td>{client.lastName}</td>
+                <td>{client.email}</td>
+              </tr>
+            ))}
           </tbody>
-          <button>Add New Chart Entry</button>
         </table>
       </div>
     </Fragment>
