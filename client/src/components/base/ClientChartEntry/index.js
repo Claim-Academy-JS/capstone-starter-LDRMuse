@@ -1,19 +1,18 @@
 import React, { Fragment, useState } from "react";
-import { useLocation } from "react-router-dom";
-
+import { useLocation, useParams } from "react-router-dom";
 import * as Yup from "yup";
-
 import { Formik, Field, Form, ErrorMessage } from "formik";
-
 import routes from "api/routes";
 import cloudinary from "api/cloudinary";
-
 import { UploadPhoto } from "./UploadPhoto";
 
 const clientChartAPI = routes("clients");
 
 export const ClientChartEntry = () => {
+  const { id } = useParams();
+
   const { state } = useLocation();
+  console.log(state.currentClient.firstName);
 
   const [fotoURL, setFotoUrl] = useState("");
 
@@ -37,8 +36,8 @@ export const ClientChartEntry = () => {
       <section className="px-4 py-4 mt-4">
         <div className="container">
           <h2 className="title is-5">
-            Chart Entry for {state?.newClient.firstName}{" "}
-            {state?.newClient.lastName}
+            {/* Chart Entry for {state?.newClient.firstName}{" "}
+            {state?.newClient.lastName} */}
           </h2>
         </div>
       </section>
@@ -80,7 +79,7 @@ export const ClientChartEntry = () => {
           }
         }}
       >
-        <Form className="box has-text-centered ml-2">
+        <Form className="box container has-text-centered">
           <div className="field">
             <label htmlFor="dateOfService">Date of Service</label>
             <div className="control">
