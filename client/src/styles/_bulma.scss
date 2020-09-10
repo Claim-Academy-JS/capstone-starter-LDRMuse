@@ -36,6 +36,7 @@ $input-shadow: none;
 @import "~bulma/sass/elements/container.sass";
 @import "~bulma/sass/elements/image.sass";
 @import "~bulma/sass/elements/title.sass";
+@import "~bulma/sass/helpers/visibility.sass";
 @import "~bulma/sass/form/_all.sass";
 @import "~bulma/sass/components/navbar.sass";
 @import "~bulma/sass/layout/hero.sass";
@@ -45,4 +46,3 @@ $input-shadow: none;
 @import "~bulma/sass/helpers/typography.sass";
 @import "~bulma/sass/grid/columns.sass";
 @import "~@creativebulma/bulma-divider";
-//TODO: Figure out how to use this ^
