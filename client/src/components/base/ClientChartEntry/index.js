@@ -12,7 +12,6 @@ export const ClientChartEntry = () => {
   const { id } = useParams();
 
   const { state } = useLocation();
-  console.log(state.currentClient.firstName);
 
   const [fotoURL, setFotoUrl] = useState("");
 
@@ -36,8 +35,9 @@ export const ClientChartEntry = () => {
       <section className="px-4 py-4 mt-4">
         <div className="container">
           <h2 className="title is-5">
-            {/* Chart Entry for {state?.newClient.firstName}{" "}
-            {state?.newClient.lastName} */}
+            Chart Entry for{" "}
+            {state.state?.firstName || state.currentClient?.firstName}{" "}
+            {state.state?.lastName || state.currentClient?.lastName}
           </h2>
         </div>
       </section>
@@ -66,10 +66,10 @@ export const ClientChartEntry = () => {
         // chartValues is declared below because the form is submitting these values onSubmit
         onSubmit={async (chartValues, { setSubmitting }) => {
           try {
-            const chartValuesWithFoto = { ...chartValues, ...{ fotoURL } };
+            const chartValuesWithFoto = { ...chartValues, fotoURL };
             const { status, message } = await clientChartAPI.update(
               { chartValues: chartValuesWithFoto },
-              state?.newClient.email
+              state?.currentClient.email
             );
             if (status > 400) {
               throw new Error(message || "Unable to add image to chart");
