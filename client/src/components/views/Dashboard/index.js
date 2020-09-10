@@ -9,6 +9,8 @@ import routes from "api/routes";
 
 import auth from "auth";
 
+import { ClientTable } from "./ClientTable";
+
 function reducer(state, action) {
   switch (action.type) {
     case "init":
@@ -167,6 +169,7 @@ export const Dashboard = () => {
           </Form>
         )}
       </Formik>
+      <ClientTable clients={clients} />
     </Fragment>
   );
 };
