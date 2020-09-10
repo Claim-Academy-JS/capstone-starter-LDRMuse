@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useReducer } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
 import * as Yup from "yup";
@@ -9,10 +9,19 @@ import routes from "api/routes";
 
 import auth from "auth";
 
+function reducer(state, action) {
+  switch (action.type) {
+    case "init":
+      return state.concat(action.clients);
+    default:
+      return state;
+  }
+}
+
 export const Dashboard = () => {
   const history = useHistory();
   const { state } = useLocation();
-  const [clients, setClients] = useState([]);
+  const [clients, dispatch] = useReducer(reducer, []);
 
   const clientsAPI = routes("clients");
 
@@ -25,12 +34,12 @@ export const Dashboard = () => {
         }
 
         const clients = await res.json();
-        setClients(clients);
+        dispatch({ clients, type: "init" });
       } catch (err) {
         console.error(err);
       }
     })();
-  });
+  }, []);
 
   const handleSignOut = () => {
     auth.signOut().then(history.push("/login"));
