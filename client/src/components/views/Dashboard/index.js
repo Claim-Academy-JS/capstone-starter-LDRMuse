@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
 import * as Yup from "yup";
@@ -9,14 +9,28 @@ import routes from "api/routes";
 
 import auth from "auth";
 
-import { Options } from "./Options";
-import { SearchClients } from "./SearchClients";
-
 export const Dashboard = () => {
   const history = useHistory();
   const { state } = useLocation();
+  const [clients, setClients] = useState([]);
 
   const clientsAPI = routes("clients");
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await clientsAPI.showAll();
+        if (res.status > 400) {
+          throw new Error("Unable to view Clients");
+        }
+
+        const clients = await res.json();
+        setClients(clients);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  });
 
   const handleSignOut = () => {
     auth.signOut().then(history.push("/login"));

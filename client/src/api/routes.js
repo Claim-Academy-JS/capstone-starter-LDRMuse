@@ -26,6 +26,11 @@ export default (route) => ({
     }
   },
 
+  async showAll() {
+    const res = await fetch(`${baseUrl}/${route}/`);
+    return res;
+  },
+
   async update(chart, email) {
     try {
       const res = await fetch(`${baseUrl}/${route}/chart-entry`, {
