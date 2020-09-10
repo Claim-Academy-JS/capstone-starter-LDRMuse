@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { useLocation, useParams, Link } from "react-router-dom";
+import { useLocation, useParams, useHistory } from "react-router-dom";
 import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import routes from "api/routes";
@@ -9,6 +9,7 @@ import { UploadPhoto } from "./UploadPhoto";
 const clientChartAPI = routes("clients");
 
 export const ClientChartEntry = () => {
+  const history = useHistory();
   const { id } = useParams();
 
   const { state } = useLocation();
@@ -167,7 +168,11 @@ export const ClientChartEntry = () => {
           <button className="button is-primary" type="submit">
             Add Chart Entry
           </button>
-          <button className="button is-success ml-4" type="submit">
+          <button
+            className="button is-success ml-4"
+            type="submit"
+            onClick={() => history.goBack()}
+          >
             Go Back
           </button>
         </Form>
