@@ -16,15 +16,7 @@ export const Dashboard = () => {
   const history = useHistory();
   const { state } = useLocation();
 
-  // 2 modes "Add Client" or "Search Client". Default is "Add Client"
-  const [mode, setMode] = useState("Add Client");
-
   const clientsAPI = routes("clients");
-
-  // takes targeted button's Text Content ex. "Add Client" or "Search Client"
-  const handleToggle = ({ target: { textContent } }) => {
-    setMode(textContent);
-  };
 
   const handleSignOut = () => {
     auth.signOut().then(history.push("/login"));
@@ -40,8 +32,6 @@ export const Dashboard = () => {
           </button>
         </div>
       </section>
-      <Options handler={handleToggle} mode={mode} />
-      {/* Default shows form. If "Search Clients is clicked, form hides" */}
       <Formik
         initialValues={{
           firstName: "",
@@ -77,63 +67,59 @@ export const Dashboard = () => {
       >
         {({ isSubmitting }) => (
           <Form className="box ml-2 has-text-centered">
-            {mode === "Add Client" ? (
+            (
+            <div className="field">
+              <label htmlFor="name">Client Name</label>
+              <div className="control">
+                <Field
+                  className="mt-3"
+                  name="firstName"
+                  type="text"
+                  placeholder="First Name"
+                />
+                <p className="help is-danger">
+                  <ErrorMessage name="firstName" />
+                </p>
+                <Field
+                  className="mt-3"
+                  name="lastName"
+                  type="text"
+                  placeholder="Last Name"
+                />
+                <p className="help is-danger">
+                  <ErrorMessage name="lastName" />
+                </p>
+              </div>
+
               <div className="field">
-                <label htmlFor="name">Client Name</label>
+                <label htmlFor="email">Client Email</label>
                 <div className="control">
-                  <Field
-                    className="mt-3"
-                    name="firstName"
-                    type="text"
-                    placeholder="First Name"
-                  />
+                  <Field className="mt-3" name="email" type="text" />
                   <p className="help is-danger">
-                    <ErrorMessage name="firstName" />
-                  </p>
-                  <Field
-                    className="mt-3"
-                    name="lastName"
-                    type="text"
-                    placeholder="Last Name"
-                  />
-                  <p className="help is-danger">
-                    <ErrorMessage name="lastName" />
+                    <ErrorMessage name="email" />
                   </p>
                 </div>
-
-                <div className="field">
-                  <label htmlFor="email">Client Email</label>
-                  <div className="control">
-                    <Field className="mt-3" name="email" type="text" />
-                    <p className="help is-danger">
-                      <ErrorMessage name="email" />
-                    </p>
-                  </div>
-                </div>
-
-                <div className="field">
-                  <label htmlFor="phone">Client Phone</label>
-                  <div className="control">
-                    <Field className="mt-3" name="phone" type="text" />
-                    <p className="help is-danger">
-                      <ErrorMessage name="phone" />
-                    </p>
-                  </div>
-                </div>
-
-                <button
-                  className="button is-primary mr-4"
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  Submit
-                </button>
               </div>
-            ) : (
-              <div>
-                <SearchClients />
+
+              <div className="field">
+                <label htmlFor="phone">Client Phone</label>
+                <div className="control">
+                  <Field className="mt-3" name="phone" type="text" />
+                  <p className="help is-danger">
+                    <ErrorMessage name="phone" />
+                  </p>
+                </div>
               </div>
-            )}
+
+              <button
+                className="button is-primary mr-4"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                Submit
+              </button>
+            </div>
+            )
           </Form>
         )}
       </Formik>
