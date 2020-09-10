@@ -4,7 +4,9 @@ import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import routes from "api/routes";
 import cloudinary from "api/cloudinary";
+
 import { UploadPhoto } from "./UploadPhoto";
+import { Charts } from "./Charts";
 
 const clientChartAPI = routes("clients");
 
@@ -43,6 +45,7 @@ export const ClientChartEntry = () => {
         </div>
       </section>
       <UploadPhoto handler={handlePhoto} />
+      <Charts />
       <Formik
         initialValues={{
           dateOfService: "",
