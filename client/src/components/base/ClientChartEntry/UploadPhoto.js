@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 export const UploadPhoto = ({ handler }) => {
   return (
-    <form className="box has-text-centered" onSubmit={handler}>
-      <div className="field">
+    <form className="box" onSubmit={handler}>
+      <div className="field is-grouped is-grouped-centered">
         <div className="file is-primary">
           <label className="file-label">
             <input className="file-input" type="file" />
