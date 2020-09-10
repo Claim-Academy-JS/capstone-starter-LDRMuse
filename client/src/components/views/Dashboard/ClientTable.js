@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
+import { Link } from "react-router-dom";
+
 export const ClientTable = ({ clients }) => {
   return (
     <Fragment>
@@ -14,6 +16,12 @@ export const ClientTable = ({ clients }) => {
                 <td>{client.lastName}</td>
                 <td>{client.email}</td>
                 <td>{client.phone}</td>
+                <Link
+                  className="button is-success is-small my-2"
+                  to="/client/:id"
+                >
+                  Add New Chart Entry
+                </Link>
               </tr>
             ))}
           </tbody>
