@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export const UploadPhoto = ({ handler }) => {
   return (
-    <form className="box" onSubmit={handler}>
+    <form className="box container" onSubmit={handler}>
       <div className="field is-grouped is-grouped-centered">
         <div className="file is-primary">
           <label className="file-label">
