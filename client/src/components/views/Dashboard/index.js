@@ -67,9 +67,10 @@ export const Dashboard = () => {
       >
         {({ isSubmitting }) => (
           <Form className="box ml-2 has-text-centered">
-            (
-            <div className="field">
-              <label htmlFor="name">Client Name</label>
+            <div className="field is-grouped is-grouped-centered">
+              <label htmlFor="name" className="is-sr-only">
+                First Name
+              </label>
               <div className="control">
                 <Field
                   className="mt-3"
@@ -80,6 +81,13 @@ export const Dashboard = () => {
                 <p className="help is-danger">
                   <ErrorMessage name="firstName" />
                 </p>
+              </div>
+
+              <label htmlFor="name" className="is-sr-only">
+                Last Name
+              </label>
+
+              <div className="control">
                 <Field
                   className="mt-3"
                   name="lastName"
@@ -92,19 +100,33 @@ export const Dashboard = () => {
               </div>
 
               <div className="field">
-                <label htmlFor="email">Client Email</label>
+                <label htmlFor="email" className="is-sr-only">
+                  Client Email
+                </label>
                 <div className="control">
-                  <Field className="mt-3" name="email" type="text" />
+                  <Field
+                    className="mt-3"
+                    name="email"
+                    type="text"
+                    placeholder="Email"
+                  />
                   <p className="help is-danger">
                     <ErrorMessage name="email" />
                   </p>
                 </div>
               </div>
 
-              <div className="field">
-                <label htmlFor="phone">Client Phone</label>
+              <div className="field ml-3">
+                <label htmlFor="phone" className="is-sr-only">
+                  Client Phone
+                </label>
                 <div className="control">
-                  <Field className="mt-3" name="phone" type="text" />
+                  <Field
+                    className="mt-3"
+                    name="phone"
+                    type="text"
+                    placeholder="(xxx)xxx-xxxx"
+                  />
                   <p className="help is-danger">
                     <ErrorMessage name="phone" />
                   </p>
@@ -112,14 +134,13 @@ export const Dashboard = () => {
               </div>
 
               <button
-                className="button is-primary mr-4"
+                className="button is-primary ml-3"
                 type="submit"
                 disabled={isSubmitting}
               >
                 Submit
               </button>
             </div>
-            )
           </Form>
         )}
       </Formik>
