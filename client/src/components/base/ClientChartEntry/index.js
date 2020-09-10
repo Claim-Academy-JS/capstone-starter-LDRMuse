@@ -26,8 +26,9 @@ export const ClientChartEntry = () => {
     fd.append("upload_preset", "brow-and-arrow");
 
     const res = await cloudinary.upload(fd);
-
+    // destructuring secure_url and turning it into json- this comes from the console.log(res)
     const { secure_url } = await res.json();
+    // using secure_url to set the state
     setFotoUrl(secure_url);
   };
 
@@ -53,16 +54,17 @@ export const ClientChartEntry = () => {
           priceOfService: "",
           additionalNotes: "",
         }}
-        // validationSchema={Yup.object({
-        //   dateOfService: Yup.string().required("required"),
-        //   typeOfService: Yup.string().required("required"),
-        //   pigmentBrand: Yup.string().required("required"),
-        //   colorFormula: Yup.string().required("required"),
-        //   needleBladeBrand: Yup.string().required("required"),
-        //   needleBladeSize: Yup.string().required("required"),
-        //   priceOfService: Yup.string().required("required"),
-        //   additionalNotes: Yup.string().required("required"),
-        // })}
+        validationSchema={Yup.object({
+          dateOfService: Yup.string().required("required"),
+          typeOfService: Yup.string().required("required"),
+          pigmentBrand: Yup.string().required("required"),
+          colorFormula: Yup.string().required("required"),
+          needleBladeBrand: Yup.string().required("required"),
+          needleBladeSize: Yup.string().required("required"),
+          priceOfService: Yup.string().required("required"),
+          additionalNotes: Yup.string().required("required"),
+        })}
+        // chartValues is declared below because the form is submitting these values onSubmit
         onSubmit={async (chartValues, { setSubmitting }) => {
           try {
             const chartValuesWithFoto = { ...chartValues, ...{ fotoURL } };
@@ -71,7 +73,7 @@ export const ClientChartEntry = () => {
               state?.newClient.email
             );
             if (status > 400) {
-              throw new Error(message || "Unable to add to chart");
+              throw new Error(message || "Unable to add image to chart");
             }
           } catch (err) {
             console.error(err);
