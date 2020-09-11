@@ -25,7 +25,7 @@ export const ClientTable = ({ clients }) => {
                     },
                   }}
                 >
-                  Add New Chart Entry
+                  View/Add Chart Notes
                 </Link>
               </tr>
             ))}
