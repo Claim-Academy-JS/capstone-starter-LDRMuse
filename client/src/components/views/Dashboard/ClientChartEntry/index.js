@@ -89,111 +89,109 @@ export const ClientChartEntry = () => {
           </h1>
 
           <div className="columns">
-            <div className="field mb-4">
-              <label className="is-sr-only" htmlFor="dateOfService">
-                Date of Service
-              </label>
-              <div className="column">
-                <Field
-                  className="mt-3"
-                  name="dateOfService"
-                  type="text"
-                  placeholder="Date of Service"
-                />
-                <p className="help is-danger">
-                  <ErrorMessage name="dateOfService" />
-                </p>
-              </div>
+            <label className="is-sr-only" htmlFor="dateOfService">
+              Date of Service
+            </label>
+            <div className="column">
+              <Field
+                className="mt-3"
+                name="dateOfService"
+                type="text"
+                placeholder="Date of Service"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="dateOfService" />
+              </p>
+            </div>
 
-              <label className="is-sr-only" htmlFor="typeOfService">
-                Type of Service
-              </label>
-              <div className="column">
-                <Field
-                  className="mt-3"
-                  name="typeOfService"
-                  type="text"
-                  placeholder="Type of Service"
-                />
-                <p className="help is-danger">
-                  <ErrorMessage name="typeOfService" />
-                </p>
-              </div>
+            <label className="is-sr-only" htmlFor="typeOfService">
+              Type of Service
+            </label>
+            <div className="column">
+              <Field
+                className="mt-3"
+                name="typeOfService"
+                type="text"
+                placeholder="Type of Service"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="typeOfService" />
+              </p>
+            </div>
 
-              <label className="is-sr-only" htmlFor="pigmentBrand">
-                Pigment Brand
-              </label>
-              <div className="column">
-                <Field
-                  className="mt-3"
-                  name="pigmentBrand"
-                  type="text"
-                  placeholder="Pigment Brand"
-                />
-                <p className="help is-danger">
-                  <ErrorMessage name="pigmentBrand" />
-                </p>
-              </div>
+            <label className="is-sr-only" htmlFor="pigmentBrand">
+              Pigment Brand
+            </label>
+            <div className="column">
+              <Field
+                className="mt-3"
+                name="pigmentBrand"
+                type="text"
+                placeholder="Pigment Brand"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="pigmentBrand" />
+              </p>
+            </div>
 
-              <label className="is-sr-only" htmlFor="colorFormula">
-                Color Formula
-              </label>
-              <div className="column">
-                <Field
-                  className="mt-3"
-                  name="colorFormula"
-                  type="text"
-                  placeholder="Color Formula"
-                />
-                <p className="help is-danger">
-                  <ErrorMessage name="colorFormula" />
-                </p>
-              </div>
+            <label className="is-sr-only" htmlFor="colorFormula">
+              Color Formula
+            </label>
+            <div className="column">
+              <Field
+                className="mt-3"
+                name="colorFormula"
+                type="text"
+                placeholder="Color Formula"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="colorFormula" />
+              </p>
+            </div>
 
-              <label className="is-sr-only" htmlFor="needleBladeBrand">
-                Needle/Blade Brand
-              </label>
-              <div className="column">
-                <Field
-                  className="mt-3"
-                  name="needleBladeBrand"
-                  type="text"
-                  placeholder="Needle/Blade Brand"
-                />
-                <p className="help is-danger">
-                  <ErrorMessage name="needleBladeBrand" />
-                </p>
-              </div>
+            <label className="is-sr-only" htmlFor="needleBladeBrand">
+              Needle/Blade Brand
+            </label>
+            <div className="column">
+              <Field
+                className="mt-3"
+                name="needleBladeBrand"
+                type="text"
+                placeholder="Needle/Blade Brand"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="needleBladeBrand" />
+              </p>
+            </div>
 
-              <label className="is-sr-only" htmlFor="needleBladeSize">
-                Needle/Blade Size
-              </label>
-              <div className="column">
-                <Field
-                  className="mt-3"
-                  name="needleBladeSize"
-                  type="text"
-                  placeholder="Needle/Blade Size"
-                />
-                <p className="help is-danger">
-                  <ErrorMessage name="needleBladeSize" />
-                </p>
-              </div>
+            <label className="is-sr-only" htmlFor="needleBladeSize">
+              Needle/Blade Size
+            </label>
+            <div className="column">
+              <Field
+                className="mt-3"
+                name="needleBladeSize"
+                type="text"
+                placeholder="Needle/Blade Size"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="needleBladeSize" />
+              </p>
+            </div>
 
-              <label className="is-sr-only" htmlFor="priceOfService">
-                Price of Service
-              </label>
-              <div className="column">
-                <Field
-                  className="mt-3"
-                  name="priceOfService"
-                  type="text"
-                  placeholder="Price of Service"
-                />
-                <p className="help is-danger">
-                  <ErrorMessage name="priceOfService" />
-                </p>
-              </div>
+            <label className="is-sr-only" htmlFor="priceOfService">
+              Price of Service
+            </label>
+            <div className="column">
+              <Field
+                className="mt-3"
+                name="priceOfService"
+                type="text"
+                placeholder="Price of Service"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="priceOfService" />
+              </p>
             </div>
           </div>
 
