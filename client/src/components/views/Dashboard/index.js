@@ -79,16 +79,19 @@ export const Dashboard = () => {
         // Add a new client
         onSubmit={async (newClient, { setSubmitting }) => {
           try {
+            const newClientWithCharts = {
+              ...newClient,
+              charts: [],
+            };
             // take newClient object and spread,
             // destructure insertedId and insert into newClient object
             // create empty array for chart notes to go into
-            const { insertedId } = await clientsAPI.create({
-              ...newClient,
-              charts: [],
-            });
+            const { insertedId } = await clientsAPI.create(newClientWithCharts);
             setSubmitting(false);
             // take newClient to route (using insertedId); Display is ClientChartEntry component
-            history.push(`/client/${insertedId}`, { currentClient: newClient });
+            history.push(`/client/${insertedId}`, {
+              currentClient: newClientWithCharts,
+            });
           } catch (err) {
             setSubmitting(false);
             console.error(err);
