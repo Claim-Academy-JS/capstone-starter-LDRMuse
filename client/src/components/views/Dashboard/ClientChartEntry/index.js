@@ -56,6 +56,7 @@ export const ClientChartEntry = () => {
           colorFormula: "",
           needleBladeBrand: "",
           needleBladeSize: "",
+          numbingAgent: "",
           priceOfService: "",
           additionalNotes: "",
         }}
@@ -66,6 +67,7 @@ export const ClientChartEntry = () => {
           colorFormula: Yup.string().required("required"),
           needleBladeBrand: Yup.string().required("required"),
           needleBladeSize: Yup.string().required("required"),
+          numbingAgent: Yup.string().required("required"),
           priceOfService: Yup.string().required("required"),
           additionalNotes: Yup.string().required("required"),
         })}
@@ -90,13 +92,12 @@ export const ClientChartEntry = () => {
             New Chart Entry
           </h1>
 
-          <div className="columns">
+          <div className="columns center">
             <label className="is-sr-only" htmlFor="dateOfService">
               Date of Service
             </label>
             <div className="column">
               <Field
-                className="mt-3"
                 name="dateOfService"
                 type="text"
                 placeholder="Date of Service"
@@ -104,12 +105,9 @@ export const ClientChartEntry = () => {
               <p className="help is-danger">
                 <ErrorMessage name="dateOfService" />
               </p>
-            </div>
-
-            <label className="is-sr-only" htmlFor="typeOfService">
-              Type of Service
-            </label>
-            <div className="column">
+              <label className="is-sr-only" htmlFor="typeOfService">
+                Type of Service
+              </label>
               <Field
                 className="mt-3"
                 name="typeOfService"
@@ -119,12 +117,9 @@ export const ClientChartEntry = () => {
               <p className="help is-danger">
                 <ErrorMessage name="typeOfService" />
               </p>
-            </div>
-
-            <label className="is-sr-only" htmlFor="pigmentBrand">
-              Pigment Brand
-            </label>
-            <div className="column">
+              <label className="is-sr-only" htmlFor="pigmentBrand">
+                Pigment Brand
+              </label>
               <Field
                 className="mt-3"
                 name="pigmentBrand"
@@ -134,12 +129,9 @@ export const ClientChartEntry = () => {
               <p className="help is-danger">
                 <ErrorMessage name="pigmentBrand" />
               </p>
-            </div>
-
-            <label className="is-sr-only" htmlFor="colorFormula">
-              Color Formula
-            </label>
-            <div className="column">
+              <label className="is-sr-only" htmlFor="colorFormula">
+                Color Formula
+              </label>
               <Field
                 className="mt-3"
                 name="colorFormula"
@@ -148,15 +140,13 @@ export const ClientChartEntry = () => {
               />
               <p className="help is-danger">
                 <ErrorMessage name="colorFormula" />
-              </p>
+              </p>{" "}
+              <label className="is-sr-only" htmlFor="needleBladeBrand">
+                Needle/Blade Brand
+              </label>
             </div>
-
-            <label className="is-sr-only" htmlFor="needleBladeBrand">
-              Needle/Blade Brand
-            </label>
             <div className="column">
               <Field
-                className="mt-3"
                 name="needleBladeBrand"
                 type="text"
                 placeholder="Needle/Blade Brand"
@@ -164,12 +154,9 @@ export const ClientChartEntry = () => {
               <p className="help is-danger">
                 <ErrorMessage name="needleBladeBrand" />
               </p>
-            </div>
-
-            <label className="is-sr-only" htmlFor="needleBladeSize">
-              Needle/Blade Size
-            </label>
-            <div className="column">
+              <label className="is-sr-only" htmlFor="needleBladeSize">
+                Needle/Blade Size
+              </label>
               <Field
                 className="mt-3"
                 name="needleBladeSize"
@@ -179,12 +166,21 @@ export const ClientChartEntry = () => {
               <p className="help is-danger">
                 <ErrorMessage name="needleBladeSize" />
               </p>
-            </div>
-
-            <label className="is-sr-only" htmlFor="priceOfService">
-              Price of Service
-            </label>
-            <div className="column">
+              <label className="is-sr-only" htmlFor="numbingAgent">
+                Numbing Agent
+              </label>
+              <Field
+                className="mt-3"
+                name="numbingAgent"
+                type="text"
+                placeholder="Numbing Agent"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="numbingAgent" />
+              </p>
+              <label className="is-sr-only" htmlFor="priceOfService">
+                Price of Service
+              </label>
               <Field
                 className="mt-3"
                 name="priceOfService"
@@ -196,26 +192,30 @@ export const ClientChartEntry = () => {
               </p>
             </div>
           </div>
-
-          <div className="field">
-            <label htmlFor="additionalNotes"> </label>
-            <div className="control">
-              <Field
-                className="mt-5 textarea has-background-danger-light"
-                name="additionalNotes"
-                type="text"
-                placeholder="Additional Notes"
-              />
-              <p className="help is-danger">
-                <ErrorMessage name="additionalNotes" />
-              </p>
+          <div className="columns center">
+            <div className="column is-full">
+              <label htmlFor="additionalNotes"> </label>
+              <div className="control">
+                <Field
+                  className="textarea has-background-danger-light "
+                  name="additionalNotes"
+                  type="text"
+                  placeholder="Additional Notes"
+                />
+                <p className="help is-danger">
+                  <ErrorMessage name="additionalNotes" />
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="has-text-centered mt-5">
+          <div className="has-text-centered">
             <button className="button" type="button" onClick={handlePhoto}>
-              Add Foto
+              Add Photo
             </button>
+          </div>
+
+          <div className="has-text-centered mt-6">
             <button className="button is-primary" type="submit">
               Add Chart Entry
             </button>

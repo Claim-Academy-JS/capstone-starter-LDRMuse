@@ -17,6 +17,7 @@ export const Charts = ({ charts }) => {
               <th>Color Formula</th>
               <th>Needle/Blade Brand</th>
               <th>Needle/Blade Size</th>
+              <th>Numbing Agent</th>
               <th>Price of Service</th>
               <th>Additional Notes</th>
             </tr>
@@ -32,6 +33,7 @@ export const Charts = ({ charts }) => {
                     colorFormula,
                     needleBladeBrand,
                     needleBladeSize,
+                    numbingAgent,
                     priceOfService,
                     additionalNotes,
                   },
@@ -45,6 +47,7 @@ export const Charts = ({ charts }) => {
                   <td>{colorFormula}</td>
                   <td>{needleBladeBrand}</td>
                   <td>{needleBladeSize}</td>
+                  <td>{numbingAgent}</td>
                   <td>{priceOfService}</td>
                   <td>{additionalNotes}</td>
                 </tr>
