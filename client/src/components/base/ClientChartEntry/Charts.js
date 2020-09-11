@@ -1,21 +1,55 @@
-import React from "react";
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 
-export const Charts = () => {
+export const Charts = ({ charts }) => {
   return (
-    <section className="section">
-      <div className="container">
-        <div id="carousel-demo" className="carousel">
-          <div className="item-1">
-            <img src="https://source.unsplash.com/random" />
-          </div>
-          <div className="item-2">
-            <img src="https://source.unsplash.com/random" />
-          </div>
-          <div className="item-3">
-            <img src="https://source.unsplash.com/random" />
-          </div>
-        </div>
+    <Fragment>
+      <div className="container box">
+        <table className="table container has-text-centered">
+          <thead>
+            <tr>
+              <th>Date of Service</th>
+              <th>Type of Service</th>
+              <th>Pigment Brand</th>
+              <th>Color Formula</th>
+              <th>Needle/Blade Brand</th>
+              <th>Needle/Blade Size</th>
+              <th>Price of Service</th>
+              <th>Additional Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {charts.map(
+              ({
+                _id,
+                dateOfService,
+                typeOfService,
+                pigmentBrand,
+                colorFormula,
+                needleBladeBrand,
+                needleBladeSize,
+                priceOfService,
+                additionalNotes,
+              }) => (
+                <tr key={_id}>
+                  <td>{dateOfService}</td>
+                  <td>{typeOfService}</td>
+                  <td>{pigmentBrand}</td>
+                  <td>{colorFormula}</td>
+                  <td>{needleBladeBrand}</td>
+                  <td>{needleBladeSize}</td>
+                  <td>{priceOfService}</td>
+                  <td>{additionalNotes}</td>
+                </tr>
+              )
+            )}
+          </tbody>
+        </table>
       </div>
-    </section>
+    </Fragment>
   );
+};
+
+Charts.propTypes = {
+  charts: PropTypes.array,
 };

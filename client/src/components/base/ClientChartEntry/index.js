@@ -23,13 +23,14 @@ export const ClientChartEntry = () => {
     (async () => {
       try {
         const res = await clientChartAPI.show(charts);
-        setCharts(res);
+        //TODO: Figure out how to get all the charts to show in the table
+        setCharts(res[0].charts);
         console.log(res[0].charts);
       } catch (err) {
         console.error(err);
       }
     })();
-  }, []);
+  });
 
   const handlePhoto = async (event) => {
     event.preventDefault();
