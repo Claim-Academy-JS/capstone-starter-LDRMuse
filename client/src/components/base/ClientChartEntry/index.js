@@ -59,7 +59,6 @@ export const ClientChartEntry = () => {
         </div>
       </section>
       <UploadPhoto handler={handlePhoto} />
-      <Charts charts={charts} />
       <Formik
         initialValues={{
           dateOfService: "",
@@ -97,74 +96,79 @@ export const ClientChartEntry = () => {
           }
         }}
       >
-        <Form className="box container has-text-centered">
-          <div className="field">
-            <label htmlFor="dateOfService">Date of Service</label>
-            <div className="control">
-              <Field className="mt-3" name="dateOfService" type="text" />
-              <p className="help is-danger">
-                <ErrorMessage name="dateOfService" />
-              </p>
+        <Form className="box container">
+          <h1 className="title is-4 has-text-centered mt-4 mb-5">
+            New Chart Entry
+          </h1>
+          <div className="columns mt-4">
+            <div className="field ml-6">
+              <label htmlFor="dateOfService">Date of Service</label>
+              <div className="control">
+                <Field className="mt-3" name="dateOfService" type="text" />
+                <p className="help is-danger">
+                  <ErrorMessage name="dateOfService" />
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="field">
-            <label htmlFor="typeOfService">Type of Service</label>
-            <div className="control">
-              <Field className="mt-3" name="typeOfService" type="text" />
-              <p className="help is-danger">
-                <ErrorMessage name="typeOfService" />
-              </p>
+            <div className="field ml-5">
+              <label htmlFor="typeOfService">Type of Service</label>
+              <div className="control">
+                <Field className="mt-3" name="typeOfService" type="text" />
+                <p className="help is-danger">
+                  <ErrorMessage name="typeOfService" />
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="field">
-            <label htmlFor="pigmentBrand">Pigment Brand</label>
-            <div className="control">
-              <Field className="mt-3" name="pigmentBrand" type="text" />
-              <p className="help is-danger">
-                <ErrorMessage name="pigmentBrand" />
-              </p>
+            <div className="field ml-5">
+              <label htmlFor="pigmentBrand">Pigment Brand</label>
+              <div className="control">
+                <Field className="mt-3" name="pigmentBrand" type="text" />
+                <p className="help is-danger">
+                  <ErrorMessage name="pigmentBrand" />
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="field">
-            <label htmlFor="colorFormula">Color Formula</label>
-            <div className="control">
-              <Field className="mt-3" name="colorFormula" type="text" />
-              <p className="help is-danger">
-                <ErrorMessage name="colorFormula" />
-              </p>
+            <div className="field ml-5">
+              <label htmlFor="colorFormula">Color Formula</label>
+              <div className="control">
+                <Field className="mt-3" name="colorFormula" type="text" />
+                <p className="help is-danger">
+                  <ErrorMessage name="colorFormula" />
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="field">
-            <label htmlFor="needleBladeBrand">Needle/Blade Brand</label>
-            <div className="control">
-              <Field className="mt-3" name="needleBladeBrand" type="text" />
-              <p className="help is-danger">
-                <ErrorMessage name="needleBladeBrand" />
-              </p>
+            <div className="field ml-5">
+              <label htmlFor="needleBladeBrand">Needle/Blade Brand</label>
+              <div className="control">
+                <Field className="mt-3" name="needleBladeBrand" type="text" />
+                <p className="help is-danger">
+                  <ErrorMessage name="needleBladeBrand" />
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="field">
-            <label htmlFor="needleBladeSize">Needle/Blade Size</label>
-            <div className="control">
-              <Field className="mt-3" name="needleBladeSize" type="text" />
-              <p className="help is-danger">
-                <ErrorMessage name="needleBladeSize" />
-              </p>
+            <div className="field ml-5">
+              <label htmlFor="needleBladeSize">Needle/Blade Size</label>
+              <div className="control">
+                <Field className="mt-3" name="needleBladeSize" type="text" />
+                <p className="help is-danger">
+                  <ErrorMessage name="needleBladeSize" />
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="field">
-            <label htmlFor="priceOfService">Price of Service</label>
-            <div className="control">
-              <Field className="mt-3" name="priceOfService" type="text" />
-              <p className="help is-danger">
-                <ErrorMessage name="priceOfService" />
-              </p>
+            <div className="field ml-5">
+              <label htmlFor="priceOfService">Price of Service</label>
+              <div className="control">
+                <Field className="mt-3" name="priceOfService" type="text" />
+                <p className="help is-danger">
+                  <ErrorMessage name="priceOfService" />
+                </p>
+              </div>
             </div>
           </div>
 
@@ -182,18 +186,21 @@ export const ClientChartEntry = () => {
               </p>
             </div>
           </div>
-          <button className="button is-primary" type="submit">
-            Add Chart Entry
-          </button>
-          <button
-            className="button is-success ml-4"
-            type="button"
-            onClick={() => history.goBack()}
-          >
-            Go Back
-          </button>
+          <div className="has-text-centered mt-5">
+            <button className="button is-primary" type="submit">
+              Add Chart Entry
+            </button>
+            <button
+              className="button is-success ml-4"
+              type="button"
+              onClick={() => history.goBack()}
+            >
+              Go Back
+            </button>
+          </div>
         </Form>
       </Formik>
+      <Charts charts={charts} />
     </Fragment>
   );
 };

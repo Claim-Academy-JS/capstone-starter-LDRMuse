@@ -5,6 +5,9 @@ export const Charts = ({ charts }) => {
   return (
     <Fragment>
       <div className="container box">
+        <h1 className="title is-4 has-text-centered mt-4 mb-5">
+          Previous Charts
+        </h1>
         <table className="table container has-text-centered">
           <thead>
             <tr>
