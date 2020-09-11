@@ -23,18 +23,22 @@ export const Charts = ({ charts }) => {
           </thead>
           <tbody>
             {charts.map(
-              ({
-                _id,
-                dateOfService,
-                typeOfService,
-                pigmentBrand,
-                colorFormula,
-                needleBladeBrand,
-                needleBladeSize,
-                priceOfService,
-                additionalNotes,
-              }) => (
-                <tr key={_id}>
+              (
+                {
+                  chartValues: {
+                    dateOfService,
+                    typeOfService,
+                    pigmentBrand,
+                    colorFormula,
+                    needleBladeBrand,
+                    needleBladeSize,
+                    priceOfService,
+                    additionalNotes,
+                  },
+                },
+                i
+              ) => (
+                <tr key={i}>
                   <td>{dateOfService}</td>
                   <td>{typeOfService}</td>
                   <td>{pigmentBrand}</td>

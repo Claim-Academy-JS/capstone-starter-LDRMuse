@@ -15,22 +15,23 @@ export const ClientChartEntry = () => {
   const { id } = useParams();
 
   const { state } = useLocation();
+  console.log(state, "state");
 
   const [fotoURL, setFotoUrl] = useState("");
-  const [charts, setCharts] = useState([]);
+  // const [charts, setCharts] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await clientChartAPI.show(charts);
-        //TODO: Figure out how to get all the charts to show in the table
-        setCharts(res[0].charts);
-        console.log(res[0].charts);
-      } catch (err) {
-        console.error(err);
-      }
-    })();
-  });
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const res = await clientChartAPI.show(id);
+  //       //TODO: Figure out how to get all the charts to show in the table
+  //       setCharts(res[0].charts);
+  //       console.log(res[0].charts, "hi");
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   })();
+  // });
 
   const handlePhoto = async (event) => {
     event.preventDefault();
@@ -97,10 +98,11 @@ export const ClientChartEntry = () => {
         }}
       >
         <Form className="container box has-text-centered">
+          {/* TODO: Add columns, column */}
           <h1 className="title is-4 has-text-centered mt-4 mb-5">
             New Chart Entry
           </h1>
-          <div className="field is-grouped is-grouped-centered mb-4">
+          <div className="field mb-4">
             <label className="is-sr-only" htmlFor="dateOfService">
               Date of Service
             </label>
@@ -221,6 +223,7 @@ export const ClientChartEntry = () => {
               </p>
             </div>
           </div>
+
           <div className="has-text-centered mt-5">
             <button className="button is-primary" type="submit">
               Add Chart Entry
@@ -235,7 +238,7 @@ export const ClientChartEntry = () => {
           </div>
         </Form>
       </Formik>
-      <Charts charts={charts} />
+      <Charts charts={state.currentClient.charts} />
     </Fragment>
   );
 };

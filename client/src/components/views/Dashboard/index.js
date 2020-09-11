@@ -30,6 +30,7 @@ export const Dashboard = () => {
   useEffect(() => {
     (async () => {
       try {
+        // List all clients
         const res = await clientsAPI.showAll();
         if (res.status > 400) {
           throw new Error("Unable to view Clients");
