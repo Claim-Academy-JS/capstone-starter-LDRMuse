@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import routes from "api/routes";
 import cloudinary from "api/cloudinary";
-
 import { UploadPhoto } from "./UploadPhoto";
 import { Charts } from "./Charts";
 
@@ -19,19 +18,6 @@ export const ClientChartEntry = () => {
 
   const [fotoURL, setFotoUrl] = useState("");
   // const [charts, setCharts] = useState([]);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const res = await clientChartAPI.show(id);
-  //       //TODO: Figure out how to get all the charts to show in the table
-  //       setCharts(res[0].charts);
-  //       console.log(res[0].charts, "hi");
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   })();
-  // });
 
   const handlePhoto = async (event) => {
     event.preventDefault();
