@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import routes from "api/routes";
 import cloudinary from "api/cloudinary";
+
 import { UploadPhoto } from "./UploadPhoto";
 import { Charts } from "./Charts";
 
@@ -14,22 +15,23 @@ export const ClientChartEntry = () => {
   const { id } = useParams();
 
   const { state } = useLocation();
+  console.log(state, "state");
 
   const [fotoURL, setFotoUrl] = useState("");
-  const [charts, setCharts] = useState([]);
+  // const [charts, setCharts] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await clientChartAPI.show(charts);
-        //TODO: Figure out how to get all the charts to show in the table
-        setCharts(res[0].charts);
-        console.log(res[0].charts);
-      } catch (err) {
-        console.error(err);
-      }
-    })();
-  });
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const res = await clientChartAPI.show(id);
+  //       //TODO: Figure out how to get all the charts to show in the table
+  //       setCharts(res[0].charts);
+  //       console.log(res[0].charts, "hi");
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   })();
+  // });
 
   const handlePhoto = async (event) => {
     event.preventDefault();
@@ -95,79 +97,115 @@ export const ClientChartEntry = () => {
           }
         }}
       >
-        <Form className="box container">
+        <Form className="container box has-text-centered">
+          {/* TODO: Add columns, column */}
           <h1 className="title is-4 has-text-centered mt-4 mb-5">
             New Chart Entry
           </h1>
-          <div className="columns mt-4">
-            <div className="field ml-6">
-              <label htmlFor="dateOfService">Date of Service</label>
-              <div className="control">
-                <Field className="mt-3" name="dateOfService" type="text" />
-                <p className="help is-danger">
-                  <ErrorMessage name="dateOfService" />
-                </p>
-              </div>
+          <div className="field mb-4">
+            <label className="is-sr-only" htmlFor="dateOfService">
+              Date of Service
+            </label>
+            <div className="control">
+              <Field
+                className="mt-3"
+                name="dateOfService"
+                type="text"
+                placeholder="Date of Service"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="dateOfService" />
+              </p>
             </div>
 
-            <div className="field ml-5">
-              <label htmlFor="typeOfService">Type of Service</label>
-              <div className="control">
-                <Field className="mt-3" name="typeOfService" type="text" />
-                <p className="help is-danger">
-                  <ErrorMessage name="typeOfService" />
-                </p>
-              </div>
+            <label className="is-sr-only" htmlFor="typeOfService">
+              Type of Service
+            </label>
+            <div className="control">
+              <Field
+                className="mt-3"
+                name="typeOfService"
+                type="text"
+                placeholder="Type of Service"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="typeOfService" />
+              </p>
             </div>
 
-            <div className="field ml-5">
-              <label htmlFor="pigmentBrand">Pigment Brand</label>
-              <div className="control">
-                <Field className="mt-3" name="pigmentBrand" type="text" />
-                <p className="help is-danger">
-                  <ErrorMessage name="pigmentBrand" />
-                </p>
-              </div>
+            <label className="is-sr-only" htmlFor="pigmentBrand">
+              Pigment Brand
+            </label>
+            <div className="control">
+              <Field
+                className="mt-3"
+                name="pigmentBrand"
+                type="text"
+                placeholder="Pigment Brand"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="pigmentBrand" />
+              </p>
             </div>
 
-            <div className="field ml-5">
-              <label htmlFor="colorFormula">Color Formula</label>
-              <div className="control">
-                <Field className="mt-3" name="colorFormula" type="text" />
-                <p className="help is-danger">
-                  <ErrorMessage name="colorFormula" />
-                </p>
-              </div>
+            <label className="is-sr-only" htmlFor="colorFormula">
+              Color Formula
+            </label>
+            <div className="control">
+              <Field
+                className="mt-3"
+                name="colorFormula"
+                type="text"
+                placeholder="Color Formula"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="colorFormula" />
+              </p>
             </div>
 
-            <div className="field ml-5">
-              <label htmlFor="needleBladeBrand">Needle/Blade Brand</label>
-              <div className="control">
-                <Field className="mt-3" name="needleBladeBrand" type="text" />
-                <p className="help is-danger">
-                  <ErrorMessage name="needleBladeBrand" />
-                </p>
-              </div>
+            <label className="is-sr-only" htmlFor="needleBladeBrand">
+              Needle/Blade Brand
+            </label>
+            <div className="control">
+              <Field
+                className="mt-3"
+                name="needleBladeBrand"
+                type="text"
+                placeholder="Needle/Blade Brand"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="needleBladeBrand" />
+              </p>
             </div>
 
-            <div className="field ml-5">
-              <label htmlFor="needleBladeSize">Needle/Blade Size</label>
-              <div className="control">
-                <Field className="mt-3" name="needleBladeSize" type="text" />
-                <p className="help is-danger">
-                  <ErrorMessage name="needleBladeSize" />
-                </p>
-              </div>
+            <label className="is-sr-only" htmlFor="needleBladeSize">
+              Needle/Blade Size
+            </label>
+            <div className="control">
+              <Field
+                className="mt-3"
+                name="needleBladeSize"
+                type="text"
+                placeholder="Needle/Blade Size"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="needleBladeSize" />
+              </p>
             </div>
 
-            <div className="field ml-5">
-              <label htmlFor="priceOfService">Price of Service</label>
-              <div className="control">
-                <Field className="mt-3" name="priceOfService" type="text" />
-                <p className="help is-danger">
-                  <ErrorMessage name="priceOfService" />
-                </p>
-              </div>
+            <label className="is-sr-only" htmlFor="priceOfService">
+              Price of Service
+            </label>
+            <div className="control">
+              <Field
+                className="mt-3"
+                name="priceOfService"
+                type="text"
+                placeholder="Price of Service"
+              />
+              <p className="help is-danger">
+                <ErrorMessage name="priceOfService" />
+              </p>
             </div>
           </div>
 
@@ -185,6 +223,7 @@ export const ClientChartEntry = () => {
               </p>
             </div>
           </div>
+
           <div className="has-text-centered mt-5">
             <button className="button is-primary" type="submit">
               Add Chart Entry
@@ -199,7 +238,7 @@ export const ClientChartEntry = () => {
           </div>
         </Form>
       </Formik>
-      <Charts charts={charts} />
+      <Charts charts={state.currentClient.charts} />
     </Fragment>
   );
 };
