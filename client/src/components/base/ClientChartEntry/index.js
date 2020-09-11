@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useLocation, useParams, useHistory } from "react-router-dom";
 import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
@@ -17,6 +17,19 @@ export const ClientChartEntry = () => {
   const { state } = useLocation();
 
   const [fotoURL, setFotoUrl] = useState("");
+  const [charts, setCharts] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await clientChartAPI.show(charts);
+        setCharts(res);
+        console.log(res[0].charts);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, []);
 
   const handlePhoto = async (event) => {
     event.preventDefault();
@@ -45,7 +58,7 @@ export const ClientChartEntry = () => {
         </div>
       </section>
       <UploadPhoto handler={handlePhoto} />
-      <Charts />
+      <Charts charts={charts} />
       <Formik
         initialValues={{
           dateOfService: "",
