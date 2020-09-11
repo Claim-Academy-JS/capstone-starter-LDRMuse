@@ -52,7 +52,10 @@ export const Dashboard = () => {
       <section className="px-4 py-4 has-text-centered mt-4 mb-4">
         <div className="container">
           <h1 className="title is-3">Hello, {state?.name} !</h1>
-          <button className="button is-text" onClick={handleSignOut}>
+          <button
+            className="button is-text has-background-danger-light"
+            onClick={handleSignOut}
+          >
             Not {state?.name}?
           </button>
         </div>
@@ -65,12 +68,12 @@ export const Dashboard = () => {
           phone: "",
         }}
         validationSchema={Yup.object({
-          firstName: Yup.string().required("first name is required"),
-          lastName: Yup.string().required("last name is required"),
-          email: Yup.string()
-            .email("invalid email")
-            .required("Email is required"),
-          phone: Yup.string().required("Phone is required"),
+          // firstName: Yup.string().required("first name is required"),
+          // lastName: Yup.string().required("last name is required"),
+          // email: Yup.string()
+          //   .email("invalid email")
+          //   .required("Email is required"),
+          // phone: Yup.string().required("Phone is required"),
         })}
         // Add a new client
         onSubmit={async (newClient, { setSubmitting }) => {
@@ -93,7 +96,8 @@ export const Dashboard = () => {
       >
         {({ isSubmitting }) => (
           <Form className="container box has-text-centered">
-            <div className="field is-grouped is-grouped-centered">
+            <h1 className="title is-4 has-text-centered">Add New Client</h1>
+            <div className="field is-grouped is-grouped-centered mb-4">
               <label htmlFor="name" className="is-sr-only">
                 First Name
               </label>

@@ -21,8 +21,11 @@ export const Home = () => (
 
     <section className="px-4 py-4">
       <div className="container">
-        <h2 className="title">About Brow and Arrow</h2>
-        <p>Brow and Arrow is a client management application</p>
+        <h2 className="title mt-6">About Brow and Arrow</h2>
+        <p className="mb-4">
+          Brow and Arrow is a versatile Client Management Application that was
+          created soley with the PMU artist in mind.{" "}
+        </p>
       </div>
     </section>
   </>
