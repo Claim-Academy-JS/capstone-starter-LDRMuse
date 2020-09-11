@@ -16,7 +16,6 @@ export const ClientChartEntry = () => {
   const { state } = useLocation();
 
   const [fotoURL, setFotoUrl] = useState("");
-  // const [charts, setCharts] = useState([]);
 
   const handlePhoto = async (event) => {
     event.preventDefault();
