@@ -187,7 +187,7 @@ export const ClientChartEntry = () => {
           </button>
           <button
             className="button is-success ml-4"
-            type="submit"
+            type="button"
             onClick={() => history.goBack()}
           >
             Go Back

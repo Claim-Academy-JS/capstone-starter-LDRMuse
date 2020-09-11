@@ -65,12 +65,12 @@ export const Dashboard = () => {
           phone: "",
         }}
         validationSchema={Yup.object({
-          firstName: Yup.string().required("first name is required"),
-          lastName: Yup.string().required("last name is required"),
-          email: Yup.string()
-            .email("invalid email")
-            .required("Email is required"),
-          phone: Yup.string().required("Phone is required"),
+          // firstName: Yup.string().required("first name is required"),
+          // lastName: Yup.string().required("last name is required"),
+          // email: Yup.string()
+          //   .email("invalid email")
+          //   .required("Email is required"),
+          // phone: Yup.string().required("Phone is required"),
         })}
         // Add a new client
         onSubmit={async (newClient, { setSubmitting }) => {
