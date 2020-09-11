@@ -14,7 +14,6 @@ export const ClientChartEntry = () => {
   const { id } = useParams();
 
   const { state } = useLocation();
-  console.log(state, "state");
 
   const [fotoURL, setFotoUrl] = useState("");
   // const [charts, setCharts] = useState([]);

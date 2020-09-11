@@ -5,7 +5,7 @@ export const addAdmin = async (newAdmin) => {
     const insertRes = await client.db('BrowAndArrow').collection('admins').insertOne(newAdmin);
     return insertRes;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -14,7 +14,7 @@ export const deleteAdmin = async () => {
     const deleteRes = await client.db('BrowAndArrow').collection('admins').remove();
     return deleteRes;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -31,7 +31,7 @@ export const addClient = async (newClient) => {
     const insertRes = await client.db('BrowAndArrow').collection('clients').insertOne(newClient);
     return insertRes;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -40,7 +40,7 @@ export const deleteClient = async () => {
     const deleteRes = await client.db('BrowAndArrow').collection('clients').remove();
     return deleteRes;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -49,7 +49,7 @@ export const addChartEntry = async (chart, email) => {
     const insertRes = await client.db('BrowAndArrow').collection('clients').updateOne({ email }, { $push: { charts: chart } });
     return insertRes;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 

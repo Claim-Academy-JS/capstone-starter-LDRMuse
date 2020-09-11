@@ -22,7 +22,7 @@ export default (route) => ({
       const res = await fetch(`${baseUrl}/${route}/${id}`);
       return await res.json();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   },
 
