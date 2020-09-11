@@ -1,10 +1,12 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { useLocation, useParams, useHistory } from "react-router-dom";
+
 import * as Yup from "yup";
+
 import { Formik, Field, Form, ErrorMessage } from "formik";
+
 import routes from "api/routes";
-import cloudinary from "api/cloudinary";
-import { UploadPhoto } from "./UploadPhoto";
+
 import { Charts } from "./Charts";
 
 const clientChartAPI = routes("clients");
@@ -17,19 +19,22 @@ export const ClientChartEntry = () => {
 
   const [fotoURL, setFotoUrl] = useState("");
 
-  const handlePhoto = async (event) => {
-    event.preventDefault();
-    const { target } = event;
-
-    const fd = new FormData();
-    fd.append("file", target.elements[0].files[0]);
-    fd.append("upload_preset", "brow-and-arrow");
-
-    const res = await cloudinary.upload(fd);
-    // destructuring secure_url and turning it into json- this comes from the console.log(res)
-    const { secure_url } = await res.json();
-    // using secure_url to set the state
-    setFotoUrl(secure_url);
+  const handlePhoto = async () => {
+    window.cloudinary
+      .createUploadWidget(
+        {
+          cloudName: "dutahaeyc",
+          uploadPreset: "brow-and-arrow",
+        },
+        (error, result) => {
+          if (result.event === "success") {
+            setFotoUrl(result.info.secure_url);
+          } else if (error) {
+            console.error(error);
+          }
+        }
+      )
+      .open();
   };
 
   return (
@@ -43,7 +48,6 @@ export const ClientChartEntry = () => {
           </h2>
         </div>
       </section>
-      <UploadPhoto handler={handlePhoto} />
       <Formik
         initialValues={{
           dateOfService: "",
@@ -209,6 +213,9 @@ export const ClientChartEntry = () => {
           </div>
 
           <div className="has-text-centered mt-5">
+            <button className="button" type="button" onClick={handlePhoto}>
+              Add Foto
+            </button>
             <button className="button is-primary" type="submit">
               Add Chart Entry
             </button>
