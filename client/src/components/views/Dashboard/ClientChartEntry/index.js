@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { useLocation, useParams, useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 import * as Yup from "yup";
 
@@ -13,7 +13,6 @@ const clientChartAPI = routes("clients");
 
 export const ClientChartEntry = () => {
   const history = useHistory();
-  const { id } = useParams();
 
   const { state } = useLocation();
 
