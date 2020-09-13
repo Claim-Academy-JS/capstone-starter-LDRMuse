@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { ModalBox as Modal } from "./ModalBox";
 
 export const Charts = ({ charts }) => {
   return (
@@ -20,6 +21,7 @@ export const Charts = ({ charts }) => {
               <th>Numbing Agent</th>
               <th>Price of Service</th>
               <th>Additional Notes</th>
+              <th>Photos</th>
             </tr>
           </thead>
           <tbody>
@@ -36,6 +38,7 @@ export const Charts = ({ charts }) => {
                     numbingAgent,
                     priceOfService,
                     additionalNotes,
+                    fotoURL,
                   },
                 },
                 i
@@ -50,6 +53,9 @@ export const Charts = ({ charts }) => {
                   <td>{numbingAgent}</td>
                   <td>{priceOfService}</td>
                   <td>{additionalNotes}</td>
+                  <td>
+                    <Modal image={fotoURL} />
+                  </td>
                 </tr>
               )
             )}

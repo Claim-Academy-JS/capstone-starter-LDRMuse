@@ -1,0 +1,44 @@
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+
+import Modal from "react-modal";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
+
+Modal.setAppElement(document.getElementById("root"));
+
+export const ModalBox = ({ image }) => {
+  const [modalActive, setModalActive] = useState(false);
+
+  const handleClick = () => {
+    setModalActive((prev) => !prev);
+  };
+
+  return (
+    <div>
+      <button className="button is-small" onClick={handleClick}>
+        View Photos
+      </button>
+      <Modal isOpen={modalActive} contentLabel="view photo">
+        <div className="">
+          <FontAwesomeIcon
+            icon={faWindowClose}
+            className="has-text-warning-dark"
+            onClick={handleClick}
+            size="2x"
+          />
+          <div className="image is-128x128">
+            <figure>
+              <img src={image} alt="Current Client" />
+            </figure>
+          </div>
+        </div>
+      </Modal>
+    </div>
+  );
+};
+
+ModalBox.propTypes = {
+  image: PropTypes.string,
+};
