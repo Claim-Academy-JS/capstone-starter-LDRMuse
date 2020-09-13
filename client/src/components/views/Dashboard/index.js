@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useReducer } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 
 import * as Yup from "yup";
 
@@ -22,6 +22,7 @@ function reducer(state, action) {
 
 export const Dashboard = () => {
   const history = useHistory();
+  const { uid } = useParams();
   const { state } = useLocation();
   const [clients, dispatch] = useReducer(reducer, []);
 
@@ -31,12 +32,10 @@ export const Dashboard = () => {
     (async () => {
       try {
         // List all clients
-        const res = await clientsAPI.showAll();
-        if (res.status > 400) {
-          throw new Error("Unable to view Clients");
-        }
-
-        const clients = await res.json();
+        const clients = await clientsAPI.show(uid);
+        // if (res.status > 400) {
+        //   throw new Error("Unable to view Clients");
+        // }
         dispatch({ clients, type: "init" });
       } catch (err) {
         console.error(err);
@@ -82,6 +81,7 @@ export const Dashboard = () => {
             const newClientWithCharts = {
               ...newClient,
               charts: [],
+              uid,
             };
             // take newClient object and spread,
             // destructure insertedId and insert into newClient object

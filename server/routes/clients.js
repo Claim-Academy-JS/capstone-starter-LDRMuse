@@ -4,9 +4,9 @@ import { addClient, addChartEntry, showAllClients } from '../db';
 
 const router = new Router();
 
-router.get('/', async (_, res) => {
+router.get('/:uid', async ({ params }, res) => {
   try {
-    const dbRes = await showAllClients();
+    const dbRes = await showAllClients(params);
     res.status(200);
     res.json(dbRes);
   } catch (error) {

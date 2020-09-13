@@ -53,9 +53,9 @@ export const addChartEntry = async (chart, email) => {
   }
 };
 
-export const showAllClients = async () => {
+export const showAllClients = async (admin) => {
   try {
-    const res = await client.db('BrowAndArrow').collection('clients').find().toArray();
+    const res = await client.db('BrowAndArrow').collection('clients').find(admin).toArray();
     return res;
   } catch (error) {
     console.error(error);
