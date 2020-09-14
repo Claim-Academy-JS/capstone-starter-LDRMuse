@@ -1,10 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 
+import dotenv from 'dotenv';
+
 import adminRouter from './routes/admin';
 import clientsRouter from './routes/clients';
 
 const app = express();
+dotenv.config();
 
 // We accept any client requests...but only CORS allowed for...
 app.use(cors({
@@ -24,6 +27,6 @@ app.use((_, res) => {
   res.status(404).send('Sorry cannot find that!');
 });
 
-app.listen(5000, () => {
+app.listen(process.env.PORT, () => {
   console.info('server running on 5000');
 });
