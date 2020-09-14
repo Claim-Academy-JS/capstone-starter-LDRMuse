@@ -31,9 +31,13 @@ export const ModalBox = ({ image }) => {
             size="2x"
           />
         </div>
-        <div className="image is-128x128">
+        <div className="control">
           <figure>
-            <img src={image} alt="Current Client" />
+            <img
+              className="image is-256x256"
+              src={image}
+              alt="Current Client"
+            />
           </figure>
         </div>
       </Modal>

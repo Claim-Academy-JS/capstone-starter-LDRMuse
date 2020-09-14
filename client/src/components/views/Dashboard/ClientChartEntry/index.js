@@ -146,6 +146,7 @@ export const ClientChartEntry = () => {
             </div>
             <div className="column">
               <Field
+                className="ml-5"
                 name="needleBladeBrand"
                 type="text"
                 placeholder="Needle/Blade Brand"
@@ -157,7 +158,7 @@ export const ClientChartEntry = () => {
                 Needle/Blade Size
               </label>
               <Field
-                className="mt-3"
+                className="mt-3 ml-5"
                 name="needleBladeSize"
                 type="text"
                 placeholder="Needle/Blade Size"
@@ -169,7 +170,7 @@ export const ClientChartEntry = () => {
                 Numbing Agent
               </label>
               <Field
-                className="mt-3"
+                className="mt-3 ml-5"
                 name="numbingAgent"
                 type="text"
                 placeholder="Numbing Agent"
@@ -181,7 +182,7 @@ export const ClientChartEntry = () => {
                 Price of Service
               </label>
               <Field
-                className="mt-3"
+                className="mt-3 ml-5"
                 name="priceOfService"
                 type="text"
                 placeholder="Price of Service"
@@ -215,7 +216,7 @@ export const ClientChartEntry = () => {
             </button>
           </div>
 
-          <div className="has-text-centered mt-6">
+          <div className="has-text-centered mt-5">
             <button className="button is-primary" type="submit">
               Add Chart Entry
             </button>
