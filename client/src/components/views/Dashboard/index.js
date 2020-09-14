@@ -204,8 +204,10 @@ export const Dashboard = () => {
           </Form>
         )}
       </Formik>
-      <button onClick={handleEmail}>Email Me List of Clients</button>
       <ClientTable clients={clients} />
+      <button className="box container is-small" onClick={handleEmail}>
+        Email Me List of Clients
+      </button>
     </Fragment>
   );
 };
