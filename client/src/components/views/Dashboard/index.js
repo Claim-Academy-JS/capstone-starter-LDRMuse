@@ -12,10 +12,11 @@ import auth from "auth";
 import { ClientTable } from "./ClientTable";
 
 function createClientsEmailList(clients) {
+  console.log(clients);
   return clients
     .map(
       ({ email, firstName, lastName }, i) => `
-    ${i + 1}. ${(email, firstName, lastName)}
+    ${i + 1}. ${email} - ${firstName} - ${lastName}
   `
     )
     .join("");

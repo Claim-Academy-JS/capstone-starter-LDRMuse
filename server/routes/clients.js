@@ -37,9 +37,10 @@ router.patch('/chart-entry', async ({ body: { chart, email } }, res) => {
   }
 });
 
-router.post('/create/email', async ({ body: { email, firstName, lastName } }, res) => {
+router.post('/create/email', async ({ body: { email, list } }, res) => {
+  console.log(email, list, 'yo');
   try {
-    const emailRes = await sendClientEmails(email, firstName, lastName);
+    const emailRes = await sendClientEmails(email, list);
     res.status(202);
     res.json(emailRes);
   } catch (error) {

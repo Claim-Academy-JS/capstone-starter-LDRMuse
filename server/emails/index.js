@@ -13,6 +13,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export default (user, list) => {
+  console.log('email', user);
   transporter.sendMail(
     {
       from: process.env.EMAIL_USER,
