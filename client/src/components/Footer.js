@@ -1,17 +1,17 @@
 import React from "react";
 
-// import { library } from "@fortawesome/fontawesome-svg-core";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { fab } from "@fortawesome/free-brands-svg-icons";
-// import {
-//   faGithub,
-//   faLinkedin,
-//   faTwitter,
-// } from "@fortawesome/free-brands-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faLinkedin,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 
-// import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
+import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
 
-// library.add(fab, faGithub, faLinkedin, faTwitter, faCommentDots);
+library.add(fab, faGithub, faLinkedin, faTwitter, faCommentDots);
 
 export const Footer = () => (
   <footer className="footer">
@@ -36,7 +36,7 @@ export const Footer = () => (
           rel="noopener noreferrer"
           className="level-item mx-2"
         >
-          {/* <FontAwesomeIcon icon={["fab", "github"]} /> */}
+          <FontAwesomeIcon icon={["fab", "github"]} />
         </a>
         <a
           href="https://dev.to/ldrmuse"
@@ -44,7 +44,7 @@ export const Footer = () => (
           rel="noopener noreferrer"
           className="level-item mx-2"
         >
-          {/* <FontAwesomeIcon icon="comment-dots" /> */}
+          <FontAwesomeIcon icon="comment-dots" />
         </a>
         <a
           className="level-item mx-2"
@@ -52,7 +52,7 @@ export const Footer = () => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          {/* <FontAwesomeIcon icon={["fab", "twitter"]} /> */}
+          <FontAwesomeIcon icon={["fab", "twitter"]} />
         </a>
       </div>
     </div>

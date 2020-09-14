@@ -23,8 +23,12 @@ export const Home = () => (
       <div className="container">
         <h2 className="title mt-6">About Brow and Arrow</h2>
         <p className="mb-4">
-          Brow and Arrow is a versatile Client Management Application that was
-          created soley with the PMU artist in mind.{" "}
+          Brow and Arrow is a versatile Client Management Application designed
+          solely with the PMU artist in mind.
+        </p>{" "}
+        <p>
+          Easily chart on clients, upload before and after photos and store
+          consent forms in this all-in-one application.
         </p>
       </div>
     </section>
