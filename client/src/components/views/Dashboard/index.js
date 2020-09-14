@@ -11,6 +11,16 @@ import auth from "auth";
 
 import { ClientTable } from "./ClientTable";
 
+function createClientsEmailList(emails) {
+  return emails
+    .map(
+      ({ text }, i) => `
+    ${i + 1}. ${text}
+  `
+    )
+    .join("");
+}
+
 function reducer(state, action) {
   switch (action.type) {
     case "init":
@@ -45,6 +55,24 @@ export const Dashboard = () => {
 
   const handleSignOut = () => {
     auth.signOut().then(history.push("/login"));
+  };
+
+  const handleEmail = async () => {
+    try {
+      const res = await clientsAPI.create(
+        {
+          firstName: state.firstName,
+          lastName: state.lastName,
+          email: createClientsEmailList(clients.filter(({ email }) => !email)),
+        },
+        "email"
+      );
+      if (res.status > 400) {
+        throw new Error(res);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -177,6 +205,7 @@ export const Dashboard = () => {
           </Form>
         )}
       </Formik>
+      <button onClick={handleEmail}>Email Me List of Clients</button>
       <ClientTable clients={clients} />
     </Fragment>
   );

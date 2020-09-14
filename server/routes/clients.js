@@ -1,5 +1,6 @@
 import { Router } from 'express';
 
+import sendClientEmails from '../emails';
 import { addClient, addChartEntry, showAllClients } from '../db';
 
 const router = new Router();
@@ -36,4 +37,14 @@ router.patch('/chart-entry', async ({ body: { chart, email } }, res) => {
   }
 });
 
+router.post('/create/email', async ({ body: { email, name } }, res) => {
+  try {
+    const emailRes = await sendClientEmails(email, name);
+    res.status(202);
+    res.json(emailRes);
+  } catch (error) {
+    res.status(500);
+    console.error(error);
+  }
+});
 export default router;

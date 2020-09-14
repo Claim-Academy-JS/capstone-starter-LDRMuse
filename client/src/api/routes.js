@@ -5,13 +5,13 @@ const baseUrl = process.env.REACT_APP_BASE_URL;
 
 // Factory Function
 export default (route) => ({
-  async create(newDBCollectionItem) {
-    const res = await fetch(`${baseUrl}/${route}/create`, {
+  async create(dbPayload, resourceRoute = "") {
+    const res = await fetch(`${baseUrl}/${route}/create/${resourceRoute}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newDBCollectionItem),
+      body: JSON.stringify(dbPayload),
     });
 
     return res.json();

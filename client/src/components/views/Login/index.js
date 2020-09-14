@@ -30,8 +30,6 @@ export const Login = () => {
     setStatus(status);
   };
 
-  //TODO: look at possible memory leak
-
   useEffect(() => {
     if (status === "Loading...") {
       (async () => {
@@ -88,9 +86,7 @@ export const Login = () => {
             case "Reset Password":
               auth
                 .sendPasswordResetEmail(email)
-                .then(() => {
-                  // TODO: Create a notification to tell them to check their ✉️
-                })
+                .then(() => {})
                 .catch((err) => {
                   console.error(err);
                 });
@@ -100,10 +96,10 @@ export const Login = () => {
                 .signInWithEmailAndPassword(email, password)
                 // goes to the object and pulls 'uid' from the user to show()
                 .then(({ user: { uid } }) => adminAPI.show(uid))
-                .then(({ uid, name }) => {
+                .then(({ uid, name, email }) => {
                   setSubmitting(false);
                   // sends admin(user) to the Dashboard
-                  history.push(`/clients/${uid}`, { name });
+                  history.push(`/clients/${uid}`, { name, email });
                 })
                 .catch((err) => {
                   setSubmitting(false);
