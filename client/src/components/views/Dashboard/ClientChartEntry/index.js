@@ -1,6 +1,10 @@
 import React, { Fragment, useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+// https://github.com/Hacker0x01/react-datepicker
+
 import * as Yup from "yup";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
@@ -17,6 +21,7 @@ export const ClientChartEntry = () => {
   const { state } = useLocation();
 
   const [fotoURL, setFotoUrl] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
 
   const handlePhoto = async () => {
     window.cloudinary
@@ -49,7 +54,7 @@ export const ClientChartEntry = () => {
       </section>
       <Formik
         initialValues={{
-          dateOfService: "",
+          dateOfService: startDate,
           typeOfService: "",
           pigmentBrand: "",
           colorFormula: "",
@@ -96,10 +101,10 @@ export const ClientChartEntry = () => {
               Date of Service
             </label>
             <div className="column">
-              <Field
+              <DatePicker
                 name="dateOfService"
-                type="text"
-                placeholder="Date of Service"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
               />
               <p className="help is-danger">
                 <ErrorMessage name="dateOfService" />
