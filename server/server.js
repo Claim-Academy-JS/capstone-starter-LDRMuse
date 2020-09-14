@@ -6,7 +6,7 @@ import clientsRouter from './routes/clients';
 
 const app = express();
 
-// We accept any client requests...but only  CORS allowed for...
+// We accept any client requests...but only CORS allowed for...
 app.use(cors({
   origin: 'http://localhost:3000',
 }));
@@ -14,7 +14,7 @@ app.use(cors({
 app.use(express.json());
 
 app.get('/', (_, res) => {
-  res.send('<h1>Express</h1>');
+  res.send('<h1>Hello from Express</h1>');
 });
 
 app.use('/admin', adminRouter);
@@ -25,5 +25,5 @@ app.use((_, res) => {
 });
 
 app.listen(5000, () => {
-  console.log('server running on 5000');
+  console.info('server running on 5000');
 });

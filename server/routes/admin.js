@@ -4,6 +4,7 @@ import { addAdmin, getAdmin } from '../db';
 
 const router = new Router();
 
+// just a test to make sure db is connected
 router.get('/', (_, res) => {
   res.send('<h1>Hello from admins</h1>');
 });
@@ -15,7 +16,6 @@ router.get('/:uid', async ({ params }, res) => {
       throw new Error('User not found!');
     }
     res.status(200);
-    console.log('mongores', mongoRes);
     res.json(mongoRes);
   } catch (err) {
     res.status(500);

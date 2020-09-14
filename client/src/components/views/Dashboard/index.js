@@ -31,7 +31,7 @@ export const Dashboard = () => {
   useEffect(() => {
     (async () => {
       try {
-        // List all clients
+        // List clients with matching "uid"
         const clients = await clientsAPI.show(uid);
         // if (res.status > 400) {
         //   throw new Error("Unable to view Clients");
