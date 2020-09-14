@@ -14,7 +14,7 @@ const client = new MongoClient(process.env.MONGO_URI, {
   await client.connect();
   process.on('SIGINT', () => {
     client.close().then(() => {
-      console.log('Closing');
+      console.info('Closing');
     });
 
     process.exit(0);

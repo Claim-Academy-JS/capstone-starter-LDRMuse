@@ -96,7 +96,7 @@ export const Login = () => {
                 .signInWithEmailAndPassword(email, password)
                 // goes to the object and pulls 'uid' from the user to show()
                 .then(({ user: { uid } }) => adminAPI.show(uid))
-                .then(({ uid, name, email }) => {
+                .then(({ uid, name }) => {
                   setSubmitting(false);
                   // sends admin(user) to the Dashboard
                   history.push(`/clients/${uid}`, { name, email });
@@ -119,7 +119,7 @@ export const Login = () => {
                   }
                   // Formik state to prevent double submissions - turn it off now (disables button)
                   setSubmitting(false);
-                  history.push(`/clients/${uid}`, { name });
+                  history.push(`/clients/${uid}`, { email, name });
                 })
                 .catch((err) => {
                   setSubmitting(false);

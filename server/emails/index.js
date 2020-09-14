@@ -7,15 +7,15 @@ dotenv.config();
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'browandarrowapp@gmail.com',
-    pass: process.env.PASSWORD,
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
 export default (user, list) => {
   transporter.sendMail(
     {
-      from: 'browandarrowapp@gmail.com',
+      from: process.env.EMAIL_USER,
       to: user,
       subject: 'Client Email List',
       text: list,

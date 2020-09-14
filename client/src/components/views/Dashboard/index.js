@@ -11,11 +11,11 @@ import auth from "auth";
 
 import { ClientTable } from "./ClientTable";
 
-function createClientsEmailList(emails) {
-  return emails
+function createClientsEmailList(clients) {
+  return clients
     .map(
-      ({ text }, i) => `
-    ${i + 1}. ${text}
+      ({ email, firstName, lastName }, i) => `
+    ${i + 1}. ${(email, firstName, lastName)}
   `
     )
     .join("");
@@ -61,9 +61,8 @@ export const Dashboard = () => {
     try {
       const res = await clientsAPI.create(
         {
-          firstName: state.firstName,
-          lastName: state.lastName,
-          email: createClientsEmailList(clients.filter(({ email }) => !email)),
+          email: state.email,
+          list: createClientsEmailList(clients),
         },
         "email"
       );
