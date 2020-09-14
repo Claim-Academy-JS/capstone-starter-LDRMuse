@@ -196,7 +196,8 @@ export const ClientChartEntry = () => {
               <label htmlFor="additionalNotes"> </label>
               <div className="control">
                 <Field
-                  className="textarea has-background-danger-light "
+                  component="textarea"
+                  className="textarea has-background-danger-light"
                   name="additionalNotes"
                   type="text"
                   placeholder="Additional Notes"
