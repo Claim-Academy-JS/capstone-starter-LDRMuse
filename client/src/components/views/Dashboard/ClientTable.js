@@ -10,7 +10,7 @@ export const ClientTable = ({ clients }) => {
         <h1 className="title is-4 has-text-centered">Current Clients</h1>
         <table className="table container has-text-centered">
           <tbody>
-            {clients.map(
+            {clients?.map(
               ({ _id, firstName, lastName, email, phone, charts }) => (
                 <tr key={_id}>
                   <td>{firstName}</td>

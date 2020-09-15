@@ -38,11 +38,11 @@ export const Login = () => {
         const { currentUser } = auth;
         if (currentUser) {
           try {
-            const { uid } = currentUser;
+            const { email, uid } = currentUser;
 
             // 'uid' is from 'auth' - we need the { name } from our mongo...
             const { name } = await adminAPI.show(uid); // this is a function pulling from mongo
-            history.push(`/clients/${uid}`, { name });
+            history.push(`/clients/${uid}`, { email, name });
           } catch (error) {
             console.error(error);
           }

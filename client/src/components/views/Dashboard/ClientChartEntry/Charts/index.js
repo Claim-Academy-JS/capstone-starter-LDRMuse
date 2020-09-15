@@ -25,7 +25,7 @@ export const Charts = ({ charts }) => {
             </tr>
           </thead>
           <tbody>
-            {charts.map(
+            {charts?.map(
               (
                 {
                   chartValues: {
@@ -69,3 +69,5 @@ export const Charts = ({ charts }) => {
 Charts.propTypes = {
   charts: PropTypes.array,
 };
+
+// Charts.defaultProps = { charts: [] }

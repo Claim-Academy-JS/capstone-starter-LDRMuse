@@ -30,13 +30,13 @@ function reducer(state, action) {
   }
 }
 
+const clientsAPI = routes("clients");
+
 export const Dashboard = () => {
   const history = useHistory();
   const { uid } = useParams();
   const { state } = useLocation();
   const [clients, dispatch] = useReducer(reducer, []);
-
-  const clientsAPI = routes("clients");
 
   useEffect(() => {
     (async () => {
@@ -51,7 +51,7 @@ export const Dashboard = () => {
         console.error(err);
       }
     })();
-  }, []);
+  }, [uid]);
 
   const handleSignOut = () => {
     auth.signOut().then(history.push("/login"));
