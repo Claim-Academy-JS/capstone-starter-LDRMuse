@@ -13,6 +13,10 @@
   align-items: center;
 }
 
+.flex--justify-center {
+  justify-items: center;
+}
+
 .flex--column {
   flex-direction: column;
 }
@@ -27,7 +31,7 @@
 
 // Bulma
 .hero {
-  background: url("https://p.kindpng.com/picc/s/3-38215_brow-bar-vector-eyebrow-png-transparent-png.png")  center fixed;
+  background: url("https://p.kindpng.com/picc/s/3-38215_brow-bar-vector-eyebrow-png-transparent-png.png")  fixed;
   // center center no-repeat  fixed
   // background-size: cover;
 }
