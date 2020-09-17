@@ -134,7 +134,7 @@ export const Dashboard = () => {
               </label>
               <div className="control">
                 <Field
-                  className="mt-3"
+                  className="mt-1 input is-rounded is-primary"
                   name="firstName"
                   type="text"
                   placeholder="First Name"
@@ -149,7 +149,7 @@ export const Dashboard = () => {
               </label>
               <div className="control">
                 <Field
-                  className="mt-3"
+                  className="mt-1 input is-rounded is-primary"
                   name="lastName"
                   type="text"
                   placeholder="Last Name"
@@ -165,7 +165,7 @@ export const Dashboard = () => {
                 </label>
                 <div className="control">
                   <Field
-                    className="mt-3"
+                    className="mt-1 input is-rounded is-primary"
                     name="email"
                     type="text"
                     placeholder="Email"
@@ -182,7 +182,7 @@ export const Dashboard = () => {
                 </label>
                 <div className="control">
                   <Field
-                    className="mt-3"
+                    className="mt-1 input is-rounded is-primary"
                     name="phone"
                     type="text"
                     placeholder="(xxx)xxx-xxxx"
@@ -205,7 +205,10 @@ export const Dashboard = () => {
         )}
       </Formik>
       <ClientTable clients={clients} />
-      <button className="box container is-small" onClick={handleEmail}>
+      <button
+        className="box container button is-small is-primary"
+        onClick={handleEmail}
+      >
         Email Me List of Clients
       </button>
     </Fragment>
