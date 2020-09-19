@@ -4,7 +4,7 @@ import { addAdmin, getAdmin } from '../db';
 
 const router = new Router();
 
-// just a test to make sure db is connected
+// just a test for localhost:5000/admins
 router.get('/', (_, res) => {
   res.send('<h1>Hello from admins</h1>');
 });

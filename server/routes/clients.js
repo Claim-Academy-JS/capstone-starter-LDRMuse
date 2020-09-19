@@ -5,7 +5,13 @@ import { addClient, addChartEntry, showAllClients } from '../db';
 
 const router = new Router();
 
+// just a test for localhost:5000/clients
+router.get('/', (_, res) => {
+  res.send('<h1>Hello from clients</h1>');
+});
+
 router.get('/:uid', async ({ params }, res) => {
+  // show all clients from ADMIN uid (uid is from firebase)
   try {
     const dbRes = await showAllClients(params);
     res.status(200);

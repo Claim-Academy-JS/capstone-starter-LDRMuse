@@ -40,7 +40,7 @@ export const Login = () => {
           try {
             const { email, uid } = currentUser;
 
-            // 'uid' is from 'auth' - we need the { name } from our mongo...
+            // 'uid' is from 'auth(firebase)' - we need the { name } from our mongo...
             const { name } = await adminAPI.show(uid); // this is a function pulling from mongo
             history.push(`/clients/${uid}`, { email, name });
           } catch (error) {
@@ -153,7 +153,7 @@ export const Login = () => {
                 </div>
               </div>
             ) : null}
-            {/* If status is not "Create Account", status is "Login", then status is "Loading..." */}
+            {/* If status is not "Create Account", status is "Loading...",then status is  "Login"*/}
             <div className="field has-text-centered">
               <label htmlFor="email" className="ml-2">
                 Email

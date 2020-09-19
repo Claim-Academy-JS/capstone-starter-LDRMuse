@@ -30,11 +30,12 @@ export const App = () => (
         />
       </Route>
 
+      {/* clients/:uid is for the ADMINS clients; this is the ADMINS uid*/}
       <Route exact path="/clients/:uid">
         <Header />
         <Dashboard />
       </Route>
-
+      {/* client/uid is for the CLIENTs actual uid*/}
       <Route exact path="/client/:id">
         <Header />
         <ClientChartEntry />

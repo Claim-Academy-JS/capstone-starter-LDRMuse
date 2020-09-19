@@ -16,6 +16,7 @@ app.use(cors({
 
 app.use(express.json());
 
+// get request for localhost:5000
 app.get('/', (_, res) => {
   res.send('<h1>Hello from Express</h1>');
 });
