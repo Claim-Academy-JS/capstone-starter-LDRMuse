@@ -11,8 +11,8 @@ import auth from "auth";
 
 import { ClientTable } from "./ClientTable";
 
-function createClientsEmailList(clients) {
-  return clients
+function createClientsEmailList(clientState) {
+  return clientState
     .map(
       ({ email, firstName, lastName }, i) => `
     ${i + 1}. ${email} - ${firstName} - ${lastName}
@@ -21,12 +21,12 @@ function createClientsEmailList(clients) {
     .join("");
 }
 
-function reducer(state, action) {
+function reducer(clientState, action) {
   switch (action.type) {
     case "init":
-      return state.concat(action.clients);
+      return clientState.concat(action.clients);
     default:
-      return state;
+      return clientState;
   }
 }
 
@@ -36,16 +36,17 @@ export const Dashboard = () => {
   const history = useHistory();
   const { uid } = useParams();
   const { state } = useLocation();
-  const [clients, dispatch] = useReducer(reducer, []);
+  const [clientState, dispatch] = useReducer(reducer, []);
 
   useEffect(() => {
     (async () => {
       try {
-        // List clients with matching "uid"
+        // Show clients with that match with ADMIN "uid"
         const clients = await clientsAPI.show(uid);
         // if (res.status > 400) {
         //   throw new Error("Unable to view Clients");
         // }
+        //dispatch is like setState (sets clientState)
         dispatch({ clients, type: "init" });
       } catch (err) {
         console.error(err);
@@ -62,7 +63,7 @@ export const Dashboard = () => {
       const res = await clientsAPI.create(
         {
           email: state.email,
-          list: createClientsEmailList(clients),
+          list: createClientsEmailList(clientState),
         },
         "email"
       );
@@ -204,7 +205,7 @@ export const Dashboard = () => {
           </Form>
         )}
       </Formik>
-      <ClientTable clients={clients} />
+      <ClientTable clients={clientState} />
       <button
         className="box container button is-small is-primary"
         onClick={handleEmail}
